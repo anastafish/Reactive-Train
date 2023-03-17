@@ -1,13 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import reportWebVitals from './reportWebVitals';
-import {
-  createHashRouter,
-  RouterProvider,
-} from "react-router-dom";
-import Login from './routes/Login';
-import Signin from './routes/Signin';
+import {createHashRouter, RouterProvider} from "react-router-dom";
+import {Login, Signin, Reservation, Trips} from './components'
+import './index.css';
+
 const router = createHashRouter([
   {
     path: "/",
@@ -16,6 +13,14 @@ const router = createHashRouter([
   {
     path: "login/",
     element: <Login />,
+  },
+  {
+    path:'reservation/',
+    element: <Reservation />
+  },
+  {
+    path:'trips',
+    element: <Trips />
   }
 ]);
 
