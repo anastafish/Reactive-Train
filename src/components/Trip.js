@@ -3,7 +3,7 @@ import React from 'react'
 function Trip() {
   return (
         <div className='flex sm:flex-row flex-col items-center justify-between
-         border-black border-[2px] p-5 gap-5 w-[70%]'>
+         border-black border-[2px] border-opacity-20 rounded-lg p-5 gap-5 w-[70%]'>
             <div className='flex flex-col sm:items-start items-center gap-2 w-[50%]'>
                 <h1 className='self-start'>Lowest Rate</h1>
                 <div className='flex items-center justify-center gap-5'>

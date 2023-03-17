@@ -2,8 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 import {createHashRouter, RouterProvider} from "react-router-dom";
-import {Login, Signin, Reservation, Trips} from './components'
+import {Login, Signin, Reservation, Trips, Customize} from './components'
 import './index.css';
+import { useState } from 'react';
 
 const router = createHashRouter([
   {
@@ -21,14 +22,32 @@ const router = createHashRouter([
   {
     path:'trips',
     element: <Trips />
-  }
+  },
+  {
+    path:'customize',
+    element:<Customize />
+  } 
 ]);
+
+export const UserContext = React.createContext();
+
+
+function Context(){
+  const [name, setName] = useState('anas')
+
+  return (
+    <UserContext.Provider value={[name,setName]}>
+      <RouterProvider router={router} />
+    </UserContext.Provider>
+  )
+}
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Context />
   </React.StrictMode>
 );
 

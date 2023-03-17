@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import { UserContext } from '..';
 import {  TextField, Select, MenuItem, Button, Stepper, StepLabel, Step} from '@mui/material';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
@@ -6,6 +7,7 @@ import {DateTimePicker } from '@mui/x-date-pickers';
 import { Link } from 'react-router-dom';
 
 function Reservation() {
+  const [user, setUser] = useContext(UserContext)
   const [trip, setTrip] = useState('return')
   
   function handleChange(e){
@@ -49,7 +51,6 @@ function Reservation() {
           <Button color='success' variant="contained" >Search
             </Button>
         </Link>
-
       </div>
     </LocalizationProvider>
 
