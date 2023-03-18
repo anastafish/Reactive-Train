@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
-import {createHashRouter, RouterProvider} from "react-router-dom";
+import {createHashRouter, RouterProvider, Navigate} from "react-router-dom";
 import {Login, Signin, Reservation, Trips, Customize, Payment} from './components'
 import './index.css';
 import { useState } from 'react';
@@ -30,14 +30,18 @@ const router = createHashRouter([
   {
     path:'payment',
     element:<Payment />
-  } 
+  },
+  {
+    path:'*',
+    element:<Navigate to="/" />
+  }
 ]);
 
 export const UserContext = React.createContext();
 
 
 function Context(){
-  const [name, setName] = useState('anas')
+  const [name, setName] = useState({})
 
   return (
     <UserContext.Provider value={[name,setName]}>

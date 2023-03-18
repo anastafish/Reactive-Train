@@ -19,9 +19,9 @@ function Trips() {
         </Stepper>
 
         <div className='w-full flex flex-col items-center gap-4'>
-          <Trip />
-          <Trip />
-          <Trip />
+          <Trip from={user.reservation.from} to={user.reservation.to}/>
+          <Trip from={user.reservation.from} to={user.reservation.to}/>
+          <Trip from={user.reservation.from} to={user.reservation.to}/>
         </div>
     </div>
   )

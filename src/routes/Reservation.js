@@ -1,18 +1,49 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext} from 'react'
 import { UserContext } from '..';
 import {  TextField, Select, MenuItem, Button, Stepper, StepLabel, Step} from '@mui/material';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
 import {DateTimePicker } from '@mui/x-date-pickers';
-import { Link } from 'react-router-dom';
 
 function Reservation() {
   const [user, setUser] = useContext(UserContext)
   const [trip, setTrip] = useState('return')
+  const [reservation, setReservation] = useState({
+    from:'',
+    to:'',
+    depart:'',
+    return:'empty',
+    adults:'',
+    kids:'',
+    special_needs:'',
+  })
+
+  function handleChangeRes(e){
+    setReservation(prevState => ({
+      ...prevState,
+      [e.target.name]: e.target.value
+    }))
+    console.log(reservation)
+  }
   
   function handleChange(e){
     setTrip(e.target.value)
-    console.log(trip)
+  }
+
+  function search(){
+    setUser(prevState => ({
+      ...prevState,
+      reservation:reservation
+    }))
+    const values = Object.values(reservation)
+    for (let i = 0; i < values.length; i++){
+      if (!values[i]){
+        alert('Complete the missing information please!')
+        return 
+      }
+    } 
+    window.open('#/trips', '_self')
+    console.log(user)
   }
 
   const steps = ['Reservation', 'Avaliable Trips','Customize Trip', 'Payment']
@@ -29,8 +60,8 @@ function Reservation() {
         </Stepper>
         <div className='flex flex-col sm:gap-3 gap-3 items-center justify-center'>
           <div className='flex sm:flex-row flex-col sm:gap-0 gap-3 items-center justify-center mt-5'>
-            <TextField label='From'/>
-            <TextField label='To'/>
+            <TextField name='from' onChange={handleChangeRes} value={reservation.from} label='From'/>
+            <TextField name='to' onChange={handleChangeRes} value={reservation.to} label='To'/>
             <Select onChange={handleChange} defaultValue={'return'} slotProps={{
             root: { className: 'sm:w-auto w-full' },
                     }}
@@ -38,19 +69,22 @@ function Reservation() {
               <MenuItem value="oneway">One Way</MenuItem>
               <MenuItem value="return">Return</MenuItem>
             </Select>
-            <DateTimePicker label="Depart"/>
-            {trip === 'return' && <DateTimePicker label="Return"/>}
+            <DateTimePicker name='depart' label="Depart" value={reservation.depart}
+             onChange={(e) => setReservation(prevState => ({...prevState, depart:e}))}
+             />
+            {trip === 'return' && <DateTimePicker name='return' value={reservation.return} 
+            label="Return"
+            onChange={(e) => setReservation(prevState => ({...prevState, return:e}))}       
+            />}
           </div>
           <div className='flex sm:flex-row flex-col sm:gap-0 gap-3 items-center'>
-            <TextField type={'number'} label="Adults"/>
-            <TextField type={'number'} label="Kids"/>
-            <TextField type={'number'} max='10' min='1' label="Special needs"/>
+            <TextField type={'number'} label="Adults" name='adults' onChange={handleChangeRes} value={reservation.adults}/>
+            <TextField type={'number'} label="Kids" name='kids' onChange={handleChangeRes} value={reservation.kids}/>
+            <TextField type={'number'} max='10' min='1' label="Special needs" name='special_needs' onChange={handleChangeRes} value={reservation.special_needs}/>
           </div>
         </div>
-        <Link to="/trips">
-          <Button color='success' variant="contained" >Search
+          <Button color='success' variant="contained" onClick={search}>Search
             </Button>
-        </Link>
       </div>
     </LocalizationProvider>
 

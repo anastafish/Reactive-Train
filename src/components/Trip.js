@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Trip() {
+function Trip({from, to}) {
   return (
         <div className='flex sm:flex-row flex-col items-center justify-between
          border-black border-[2px] border-opacity-20 rounded-lg p-5 gap-5 w-[70%]'>
@@ -12,9 +12,9 @@ function Trip() {
                     <h1>06:00</h1>
                 </div>
                 <div className='flex items-center justify-center gap-5'>
-                    <h1>DMM</h1>
+                    <h1>{from}</h1>
                     <h1 className='w-[100px] text-center'>Non-stop, 1h</h1>
-                    <h1>DOH</h1>
+                    <h1>{to}</h1>
                 </div>
             </div>
 
