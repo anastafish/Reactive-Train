@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Reactive-Train/static/css/main.ba18acda.css",
-    "main.js": "/Reactive-Train/static/js/main.31b360e0.js",
+    "main.css": "/Reactive-Train/static/css/main.33494172.css",
+    "main.js": "/Reactive-Train/static/js/main.6eb74450.js",
     "static/js/787.508efa81.chunk.js": "/Reactive-Train/static/js/787.508efa81.chunk.js",
     "index.html": "/Reactive-Train/index.html",
-    "main.ba18acda.css.map": "/Reactive-Train/static/css/main.ba18acda.css.map",
-    "main.31b360e0.js.map": "/Reactive-Train/static/js/main.31b360e0.js.map",
+    "main.33494172.css.map": "/Reactive-Train/static/css/main.33494172.css.map",
+    "main.6eb74450.js.map": "/Reactive-Train/static/js/main.6eb74450.js.map",
     "787.508efa81.chunk.js.map": "/Reactive-Train/static/js/787.508efa81.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ba18acda.css",
-    "static/js/main.31b360e0.js"
+    "static/css/main.33494172.css",
+    "static/js/main.6eb74450.js"
   ]
 }
