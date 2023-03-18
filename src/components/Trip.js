@@ -20,14 +20,14 @@ function Trip() {
 
             <div className='flex items-center sm:justify-between justify-center gap-3 w-[30%]'>
                 <div className='flex flex-col items-center border-black border-[2px]
-                 p-3 border-opacity-40 hover:bg-gray-200 cursor-pointer'>
+                 p-3 border-opacity-40 hover:bg-gray-200 cursor-pointer rounded-lg'>
                   <h1 className='select-none'>Economy</h1>  
                   <h1 className='select-none'>SAR 1600</h1>
                 </div>
 
                 <div className='flex flex-col items-center border-black border-[2px]
-                 p-3 border-opacity-40 hover:bg-gray-200 cursor-pointer'>
-                    <h1 className='select-none'>Busniess</h1>    
+                 p-3 border-opacity-40 hover:bg-gray-200 cursor-pointer rounded-lg'>
+                    <h1 className='select-none'>First</h1>    
                     <h1 className='select-none'>SAR 1600</h1>
                 </div>
             </div>

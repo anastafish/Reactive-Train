@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 import {createHashRouter, RouterProvider} from "react-router-dom";
-import {Login, Signin, Reservation, Trips, Customize} from './components'
+import {Login, Signin, Reservation, Trips, Customize, Payment} from './components'
 import './index.css';
 import { useState } from 'react';
 
@@ -26,6 +26,10 @@ const router = createHashRouter([
   {
     path:'customize',
     element:<Customize />
+  },
+  {
+    path:'payment',
+    element:<Payment />
   } 
 ]);
 
