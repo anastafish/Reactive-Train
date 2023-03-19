@@ -4,4 +4,7 @@ export {default as Reservation} from './routes/Reservation'
 export {default as Trips} from './routes/Trips'
 export {default as Customize} from './routes/Customize'
 export {default as Payment} from './routes/Payment'
+export {default as Tickets} from './routes/Tickets'
+export {default as Nav} from './components/Nav'
+
 

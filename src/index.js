@@ -2,9 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 import {createHashRouter, RouterProvider, Navigate} from "react-router-dom";
-import {Login, Signin, Reservation, Trips, Customize, Payment} from './components'
+import {Login, Signin, Reservation, Trips, Customize, Payment, Tickets} from './components'
 import './index.css';
 import { useState } from 'react';
+import { ProSidebarProvider } from 'react-pro-sidebar';
+
 
 const router = createHashRouter([
   {
@@ -32,6 +34,10 @@ const router = createHashRouter([
     element:<Payment />
   },
   {
+    path:'tickets',
+    element: <Tickets />
+  },
+  {
     path:'*',
     element:<Navigate to="/" />
   }
@@ -41,7 +47,7 @@ export const UserContext = React.createContext();
 
 
 function Context(){
-  const [name, setName] = useState({})
+  const [name, setName] = useState({theme:true})
 
   return (
     <UserContext.Provider value={[name,setName]}>
@@ -55,7 +61,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <React.StrictMode>
-    <Context />
+    <ProSidebarProvider>
+      <Context />
+    </ProSidebarProvider>    
   </React.StrictMode>
 );
 

@@ -6,6 +6,15 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow-x: hidden;
     height: 100vh;
     width: 100vw;
 }
+
+.scrol::-webkit-scrollbar{
+    display: none;
+  }
+
+.active{
+    background-color: greenyellow;
+}  

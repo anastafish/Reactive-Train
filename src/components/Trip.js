@@ -1,6 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { UserContext } from '..';
 
 function Trip({from, to}) {
+    const [user, setUser] = useContext(UserContext) 
+
+    function tripHandler(e) {
+        setUser(prevState => ({
+            ...prevState,
+            trip:e.target.parentElement.innerText
+        }))
+        console.log(e.target.parentElement.innerText)
+        window.open('#/customize', '_self')
+    }
+
   return (
         <div className='flex sm:flex-row flex-col items-center justify-between
          border-black border-[2px] border-opacity-20 rounded-lg p-5 gap-5 w-[70%]'>
@@ -20,15 +32,19 @@ function Trip({from, to}) {
 
             <div className='flex items-center sm:justify-between justify-center gap-3 w-[30%]'>
                 <div className='flex flex-col items-center border-black border-[2px]
-                 p-3 border-opacity-40 hover:bg-gray-200 cursor-pointer rounded-lg'>
+                 p-3 border-opacity-40 hover:bg-gray-200 cursor-pointer rounded-lg'
+                    onClick={tripHandler}
+                 >
                   <h1 className='select-none'>Economy</h1>  
                   <h1 className='select-none'>SAR 1600</h1>
                 </div>
 
                 <div className='flex flex-col items-center border-black border-[2px]
-                 p-3 border-opacity-40 hover:bg-gray-200 cursor-pointer rounded-lg'>
+                 p-3 border-opacity-40 hover:bg-gray-200 cursor-pointer rounded-lg'
+                 onClick={tripHandler}
+                 >
                     <h1 className='select-none'>First</h1>    
-                    <h1 className='select-none'>SAR 1600</h1>
+                    <h1 className='select-none'>SAR 5000</h1>
                 </div>
             </div>
         </div>

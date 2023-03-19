@@ -21,7 +21,6 @@ function Signin() {
       ...prevState,
       [e.target.name]: e.target.value
     }))
-    console.log(userInfo)
   }
 
   function signUp(){

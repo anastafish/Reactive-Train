@@ -20,6 +20,7 @@ function Login() {
   }
 
   function login(){
+    if (user.userInfo){
     if (loginInfo.email === user.userInfo.email && loginInfo.password === user.userInfo.password){
       window.open('#/reservation', '_self')
     }
@@ -27,6 +28,11 @@ function Login() {
       alert('the email or password are incorrect')
     }
   }
+  else {
+    alert('Sign up first!')
+  }
+}
+
 
   return (
     <div className='flex flex-col items-center gap-5'>

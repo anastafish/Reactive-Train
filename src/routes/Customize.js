@@ -1,8 +1,8 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { UserContext } from '..';
 import {Stepper, StepLabel, Step} from '@mui/material';
 import {  TextField, Button } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Nav } from '../components';
 
 import '../styles/customize.css'
 
@@ -11,6 +11,9 @@ import '../styles/customize.css'
 function Customize() {
     const steps = ['Reservation', 'Avaliable Trips','Customize Trip', 'Payment']
     const [user, setUser] = useContext(UserContext)
+    const [luggage, setLuggage] = useState(0)
+    const qty = Number(user.reservation.adults) + Number(user.reservation.kids) + Number(user.reservation.special_needs)
+
 
     function handleClick(e){
         if (e.target.className === `seat selected`) {
@@ -21,8 +24,35 @@ function Customize() {
         }
     }
 
+    function handleChange(e) {
+        setLuggage(e.target.value)
+    }
+
+    function selectSeats(){
+        const seatsId = []
+        let seatsArr = document.getElementsByClassName('seat selected')
+        for (let i = 0; i < seatsArr.length; i++){
+            seatsId.push(seatsArr[i].id)
+        } if(seatsId.length === qty && luggage){
+        setUser(prevState => ({
+            ...prevState, 
+            custom:{
+                seats:seatsId,
+                luggage:luggage
+            }
+        }))
+        console.log(user)
+        window.open('#/payment', '_self')
+    }
+    else{
+        alert('Choose A seat and luggage size')
+    }
+        
+    }
+
   return (
     <div className='flex flex-col justify-evenly items-center w-[100vw] h-[100vh]'>
+        <Nav />
          <Stepper style={{width:'100%'}} activeStep={2} alternativeLabel>
           {steps.map((label) => (
             <Step key={label}>
@@ -35,7 +65,7 @@ function Customize() {
          border-black rounded-lg border-[1.5px]'>
         <div className='flex justify-between gap-2 p-2 items-center bg-red-400'>
                 <div className='flex items-center'>
-                    <div className="seat selected"></div>
+                    <div className="seat bg-green-800"></div>
                     <h1>Your Seat</h1>
                 </div>
                 <div className='flex items-center'>
@@ -131,10 +161,10 @@ function Customize() {
                   </div>
                 </div>
                 <div className='flex items-center flex-col'>
-                    <TextField label='Luggage Weight (Kg)' type='number' maxRows={1}/>
-                    <Link to="/payment">
-                    <Button color='success' variant="contained" style={{ margin:'5px'}}>processed to Payment</Button>
-                    </Link>
+                    <TextField label='Luggage Weight (Kg)' name='luggage'
+                     type='number' onChange={handleChange} value={luggage} />
+                    <Button color='success' variant="contained"
+                     onClick={selectSeats} style={{ margin:'5px'}}>processed to Payment</Button>
                 </div>
         </div>
         </div>
