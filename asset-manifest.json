@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Reactive-Train/static/css/main.71f03c32.css",
-    "main.js": "/Reactive-Train/static/js/main.daf5c554.js",
+    "main.js": "/Reactive-Train/static/js/main.713aaf27.js",
     "static/js/787.508efa81.chunk.js": "/Reactive-Train/static/js/787.508efa81.chunk.js",
     "static/media/bg.jpg": "/Reactive-Train/static/media/bg.a21b7b13bb5284187040.jpg",
     "static/media/station.jpg": "/Reactive-Train/static/media/station.553abd3978e6cfcce813.jpg",
@@ -17,11 +17,11 @@
     "static/media/icon-menu.svg": "/Reactive-Train/static/media/icon-menu.f967d833be0e64002eeaadab0bae9ac5.svg",
     "static/media/home.svg": "/Reactive-Train/static/media/home.07ed4b9aaa91b821b21dce69197360a4.svg",
     "main.71f03c32.css.map": "/Reactive-Train/static/css/main.71f03c32.css.map",
-    "main.daf5c554.js.map": "/Reactive-Train/static/js/main.daf5c554.js.map",
+    "main.713aaf27.js.map": "/Reactive-Train/static/js/main.713aaf27.js.map",
     "787.508efa81.chunk.js.map": "/Reactive-Train/static/js/787.508efa81.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.71f03c32.css",
-    "static/js/main.daf5c554.js"
+    "static/js/main.713aaf27.js"
   ]
 }
