@@ -6,5 +6,5 @@ export {default as Customize} from './routes/Customize'
 export {default as Payment} from './routes/Payment'
 export {default as Tickets} from './routes/Tickets'
 export {default as Nav} from './components/Nav'
-
+export {default as ProfilePage} from './routes/ProfilePage'
 

@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect, useRef} from 'react'
 import { UserContext } from '..';
-import {  TextField, Select, MenuItem, Button, Stepper, StepLabel, Step} from '@mui/material';
+import {  TextField, Select, MenuItem, Button, Stepper, StepLabel, Step, Alert} from '@mui/material';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
 import {DateTimePicker } from '@mui/x-date-pickers';
@@ -20,6 +20,7 @@ function Reservation() {
     kids:'',
     special_needs:'',
   })
+  const [error, setError] = useState('')
 
   function handleChangeRes(e){
     setReservation(prevState => ({
@@ -41,7 +42,8 @@ function Reservation() {
     const values = Object.values(reservation)
     for (let i = 0; i < values.length; i++){
       if (!values[i]){
-        alert('Complete the missing information please!')
+        setError('Complete the missing information please!')
+        setTimeout(() => setError(''), 5000)
         return 
       }
     } 
@@ -52,7 +54,11 @@ function Reservation() {
 
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <div className='flex flex-col justify-between p-2 gap-5 items-center w-[100vw] h-[100vh]'>
+        <div className='flex flex-col justify-between p-2 gap-14 items-center w-[100vw] h-[100vh]'>
+        {error && <Alert
+             severity="warning"
+              className='absolute top-5'
+              >{error}</Alert> }
         <Nav />
           <Stepper style={{width:'100%'}} activeStep={0} alternativeLabel>
             {steps.map((label) => (
@@ -94,7 +100,7 @@ function Reservation() {
               <TextField type={'number'} max='10' min='1' label="Special needs" name='special_needs' onChange={handleChangeRes} value={reservation.special_needs}/>
             </div>
           </div>
-            <Button color='success' variant="contained" onClick={search}>Search
+            <Button style={{marginBottom:'4rem', marginTop:'1rem'}} color='success' variant="contained" onClick={search}>Search
               </Button>
       </div>
     </LocalizationProvider>

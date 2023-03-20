@@ -7,7 +7,7 @@ import { Nav } from '../components';
 
 function Trips() {
   const steps = ['Reservation', 'Avaliable Trips','Customize Trip', 'Payment']
-  const [user, setUser] = useContext(UserContext)
+  const [user] = useContext(UserContext)
 
   return (
     <div className='flex flex-col justify-evenly gap-5 items-center w-[100vw] h-[100vh]'>
@@ -20,7 +20,7 @@ function Trips() {
           ))}
         </Stepper>
 
-        <div className='w-full flex flex-col items-center gap-4 overflow-y-scroll'>
+        <div className='w-full flex flex-col scrol items-center gap-4 overflow-y-scroll'>
           <Trip from={user.reservation.from} to={user.reservation.to} />
           <Trip from={user.reservation.from} to={user.reservation.to} />
           <Trip from={user.reservation.from} to={user.reservation.to} />

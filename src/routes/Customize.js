@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { UserContext } from '..';
-import {Stepper, StepLabel, Step} from '@mui/material';
+import {Stepper, StepLabel, Step, Alert} from '@mui/material';
 import {  TextField, Button } from '@mui/material';
 import { Nav } from '../components';
 
@@ -13,6 +13,7 @@ function Customize() {
     const [user, setUser] = useContext(UserContext)
     const [luggage, setLuggage] = useState(0)
     const qty = Number(user.reservation.adults) + Number(user.reservation.kids) + Number(user.reservation.special_needs)
+    const [error, setError] = useState('')
 
 
     function handleClick(e){
@@ -44,15 +45,24 @@ function Customize() {
         console.log(user)
         window.open('#/payment', '_self')
     }
-    else{
-        alert('Choose A seat and luggage size')
+    else if (seatsId.length > qty) {
+        setError(`Please select ${qty} seat${qty === 1 ? '' : 's'} only`)
+        setTimeout(() => setError(''), 5000)
     }
-        
+    else if (seatsId.length < qty) {
+        setError(`Please select ${-(seatsId.length - qty)}
+            more seat${ -(seatsId.length - qty) === 1 ? '' : 's'}`)   
+            setTimeout(() => setError(''), 5000)
     }
-
+    else if (!luggage) {
+        setError('Please choose the luggage weight!')
+        setTimeout(() => setError(''), 5000)
+    }
+   }
+     
   return (
-    <div className='flex flex-col justify-evenly items-center w-[100vw] h-[100vh]'>
-        <Nav />
+    <div className='flex flex-col justify-evenly items-center gap-2 w-[100vw] sm:h-[100vh] h-full'>
+        <Nav />        
          <Stepper style={{width:'100%'}} activeStep={2} alternativeLabel>
           {steps.map((label) => (
             <Step key={label}>
@@ -60,21 +70,24 @@ function Customize() {
             </Step>
           ))}
         </Stepper>
-            
+            {error && <Alert
+             severity="warning"
+              className='absolute top-5'
+              >{error}</Alert> }       
         <div className='flex flex-col gap-5 items-center
-         border-black rounded-lg border-[1.5px]'>
-        <div className='flex justify-between gap-2 p-2 items-center bg-red-400'>
+          rounded-lg border-[1.5px] sm:w-fit w-[80%]'>
+        <div className='flex justify-between gap-2 w-full p-2 rounded-t-lg items-center bg-red-400'>
                 <div className='flex items-center'>
                     <div className="seat bg-green-800"></div>
-                    <h1>Your Seat</h1>
+                    <h1 className='sm:text-[20px] text-[15px]'>Your Seat</h1>
                 </div>
                 <div className='flex items-center'>
                     <div className="seat sold"></div>
-                    <h1>Reserved</h1>
+                    <h1 className='sm:text-[20px] text-[15px]'>Reserved</h1>
                 </div>
                 <div className='flex items-center'>
                     <div className="seat "></div>
-                    <h1>Avaliable</h1>
+                    <h1 className='sm:text-[20px] text-[15px]'>Avaliable</h1>
                 </div>
             </div>
             <div className="">         

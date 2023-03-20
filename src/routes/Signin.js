@@ -1,13 +1,13 @@
 import React, { useContext, useState } from 'react'
 import { UserContext } from '..';
 import { Link } from "react-router-dom"
-import {  TextField } from '@mui/material';
-import { Button } from '@mui/material';
+import {  TextField, Button, Alert } from '@mui/material';
 
 
 
 function Signin() {
   const [user, setUser] = useContext(UserContext)
+  const [error, setError] = useState('')
 
   const [userInfo, setUserInfo] = useState({
     name:'',
@@ -24,20 +24,29 @@ function Signin() {
   }
 
   function signUp(){
-    if (userInfo.name && userInfo.email && userInfo.password === userInfo.confirmPassword){
+    if (userInfo.password !== userInfo.confirmPassword) {
+      setError("The passwords don't match!")
+      setTimeout(() => setError(''), 5000)
+    }
+    else if (!userInfo.name || !userInfo.email || !userInfo.password || !userInfo.confirmPassword){
+      setError("Please fill all the required fields")
+      setTimeout(() => setError(''), 5000)
+    }
+    else {
     setUser(prevState => ({
       ...prevState,
       userInfo:userInfo
     }))
     window.open('#/login', '_self')
-  }
-  else {
-    alert('error')
-  }
+  }  
   }
 
   return (
     <div className='flex flex-col items-center gap-5'>
+      {error && <Alert
+             severity="warning"
+              className='absolute top-5'
+              >{error}</Alert> }
         <h1 className='text-[33px] self-start font-extrabold'>Sign Up</h1>
         <div className='flex flex-col gap-2 w-[100%]'>
             <TextField name='name' value={userInfo.name} onChange={handleChange} fullWidth={true} label="Full Name"/>
