@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Reactive-Train/static/css/main.63694333.css",
-    "main.js": "/Reactive-Train/static/js/main.9d4c8b5c.js",
+    "main.css": "/Reactive-Train/static/css/main.ad2801c8.css",
+    "main.js": "/Reactive-Train/static/js/main.f922f256.js",
     "static/js/787.508efa81.chunk.js": "/Reactive-Train/static/js/787.508efa81.chunk.js",
     "static/media/station.jpg": "/Reactive-Train/static/media/station.553abd3978e6cfcce813.jpg",
     "static/media/bg-card-back.png": "/Reactive-Train/static/media/bg-card-back.23f68fa3aa3d5b33dfc8.png",
@@ -10,14 +10,16 @@
     "index.html": "/Reactive-Train/index.html",
     "static/media/profile.svg": "/Reactive-Train/static/media/profile.122b5faf1085d00ea03dd63b5e85d047.svg",
     "static/media/card.svg": "/Reactive-Train/static/media/card.70a4b44bfe1da9522cba4645e27f8311.svg",
+    "static/media/icon-menu-close.svg": "/Reactive-Train/static/media/icon-menu-close.ca20d86e8364ad748c947025ef771994.svg",
     "static/media/bank.svg": "/Reactive-Train/static/media/bank.d35c816a64faf829a682c188077aea05.svg",
+    "static/media/icon-menu.svg": "/Reactive-Train/static/media/icon-menu.f967d833be0e64002eeaadab0bae9ac5.svg",
     "static/media/home.svg": "/Reactive-Train/static/media/home.07ed4b9aaa91b821b21dce69197360a4.svg",
-    "main.63694333.css.map": "/Reactive-Train/static/css/main.63694333.css.map",
-    "main.9d4c8b5c.js.map": "/Reactive-Train/static/js/main.9d4c8b5c.js.map",
+    "main.ad2801c8.css.map": "/Reactive-Train/static/css/main.ad2801c8.css.map",
+    "main.f922f256.js.map": "/Reactive-Train/static/js/main.f922f256.js.map",
     "787.508efa81.chunk.js.map": "/Reactive-Train/static/js/787.508efa81.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.63694333.css",
-    "static/js/main.9d4c8b5c.js"
+    "static/css/main.ad2801c8.css",
+    "static/js/main.f922f256.js"
   ]
 }
