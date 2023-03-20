@@ -1,9 +1,11 @@
 {
   "files": {
-    "main.css": "/Reactive-Train/static/css/main.afd05a9a.css",
-    "main.js": "/Reactive-Train/static/js/main.2c9736eb.js",
+    "main.css": "/Reactive-Train/static/css/main.71f03c32.css",
+    "main.js": "/Reactive-Train/static/js/main.daf5c554.js",
     "static/js/787.508efa81.chunk.js": "/Reactive-Train/static/js/787.508efa81.chunk.js",
+    "static/media/bg.jpg": "/Reactive-Train/static/media/bg.a21b7b13bb5284187040.jpg",
     "static/media/station.jpg": "/Reactive-Train/static/media/station.553abd3978e6cfcce813.jpg",
+    "static/media/whitebg.jpg": "/Reactive-Train/static/media/whitebg.3d08b47aa1f23defc8d4.jpg",
     "static/media/bg-card-back.png": "/Reactive-Train/static/media/bg-card-back.23f68fa3aa3d5b33dfc8.png",
     "static/media/bg-card-front.png": "/Reactive-Train/static/media/bg-card-front.8153e2ca184402a8385f.png",
     "static/media/ticket.svg": "/Reactive-Train/static/media/ticket.85617f5f44e859040ef90bbb4833a2a6.svg",
@@ -14,12 +16,12 @@
     "static/media/bank.svg": "/Reactive-Train/static/media/bank.d35c816a64faf829a682c188077aea05.svg",
     "static/media/icon-menu.svg": "/Reactive-Train/static/media/icon-menu.f967d833be0e64002eeaadab0bae9ac5.svg",
     "static/media/home.svg": "/Reactive-Train/static/media/home.07ed4b9aaa91b821b21dce69197360a4.svg",
-    "main.afd05a9a.css.map": "/Reactive-Train/static/css/main.afd05a9a.css.map",
-    "main.2c9736eb.js.map": "/Reactive-Train/static/js/main.2c9736eb.js.map",
+    "main.71f03c32.css.map": "/Reactive-Train/static/css/main.71f03c32.css.map",
+    "main.daf5c554.js.map": "/Reactive-Train/static/js/main.daf5c554.js.map",
     "787.508efa81.chunk.js.map": "/Reactive-Train/static/js/787.508efa81.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.afd05a9a.css",
-    "static/js/main.2c9736eb.js"
+    "static/css/main.71f03c32.css",
+    "static/js/main.daf5c554.js"
   ]
 }
