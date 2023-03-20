@@ -3,7 +3,7 @@ import { UserContext } from '..';
 import {Stepper, StepLabel, Step, Alert} from '@mui/material';
 import {  TextField, Button } from '@mui/material';
 import { Nav } from '../components';
-
+import whitebg from '../images/whitebg.jpg'
 import '../styles/customize.css'
 
 
@@ -61,7 +61,11 @@ function Customize() {
    }
      
   return (
-    <div className='flex flex-col justify-evenly items-center gap-2 w-[100vw] sm:h-[100vh] h-full'>
+    <div 
+    style={{ backgroundImage:`url(${whitebg})`, backgroundRepeat:"no-repeat",
+        backgroundSize:"cover"}} 
+    className='flex flex-col justify-evenly items-center gap-2
+     w-[100vw] sm:h-[100vh] h-full'>
         <Nav />        
          <Stepper style={{width:'100%'}} activeStep={2} alternativeLabel>
           {steps.map((label) => (
@@ -75,7 +79,7 @@ function Customize() {
               className='absolute top-5'
               >{error}</Alert> }       
         <div className='flex flex-col gap-5 items-center
-          rounded-lg border-[1.5px] sm:w-fit w-[80%]'>
+          rounded-lg border-[1.5px] sm:w-fit w-[80%] bg-white bg-opacity-70 pb-2'>
         <div className='flex justify-between gap-2 w-full p-2 rounded-t-lg items-center bg-red-400'>
                 <div className='flex items-center'>
                     <div className="seat bg-green-800"></div>
@@ -180,6 +184,11 @@ function Customize() {
                      onClick={selectSeats} style={{ margin:'5px'}}>processed to Payment</Button>
                 </div>
         </div>
+        <a
+              className='absolute bottom-0 left-0 text-black max-w-[200px] text-center'
+              target='_blank'
+              rel="noreferrer"
+              href="https://www.freepik.com/free-photo/white-painted-wall-texture-background_18416494.htm#page=2&query=website%20background&position=0&from_view=search&track=ais">background by rawpixel.com on Freepik</a>
         </div>
   )
 }

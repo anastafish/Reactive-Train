@@ -11,6 +11,7 @@ import Summary from '../components/Summary';
 import front from  '../images/bg-card-front.png'
 import back from  '../images/bg-card-back.png'
 import { Nav } from '../components';
+import whitebg from '../images/whitebg.jpg'
 
 
 
@@ -104,8 +105,11 @@ function Payment() {
                     </div>
             </Box>
         </Modal>
-    <div className='flex flex-col justify-evenly gap-5 items-center
-     w-[100vw] h-[100vh] sm:pt-20 pt-24'>   
+    <div 
+    style={{ backgroundImage:`url(${whitebg})`, backgroundRepeat:"no-repeat",
+    backgroundSize:"cover"}} 
+    className='flex flex-col justify-evenly gap-5 items-center
+     w-[100vw] h-full sm:pt-20 pt-24 pb-2'>   
      {error && <Alert
              severity="warning"
               className='absolute top-5'
@@ -179,6 +183,11 @@ function Payment() {
                     </div>
             </div>
                 <Button onClick={pay} color='success' variant='contained'>Pay</Button>  
+                <a
+              className='absolute bottom-0 left-0 text-black max-w-[200px] text-center'
+              target='_blank'
+              rel="noreferrer"
+              href="https://www.freepik.com/free-photo/white-painted-wall-texture-background_18416494.htm#page=2&query=website%20background&position=0&from_view=search&track=ais">background by rawpixel.com on Freepik</a>
     </div>
     </LocalizationProvider>
   )

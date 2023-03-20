@@ -51,7 +51,7 @@ export const UserContext = React.createContext();
 
 
 function Context(){
-  const [name, setName] = useState({theme:false})
+  const [name, setName] = useState({theme:false, active:'home'})
 
   return (
     <UserContext.Provider value={[name,setName]}>

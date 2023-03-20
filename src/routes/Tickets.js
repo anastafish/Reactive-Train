@@ -1,15 +1,19 @@
-import React, { useState, useContext } from 'react'
+import React, {useContext } from 'react'
 import { UserContext } from '..';
 import Summary from '../components/Summary';
-import moment from "moment";
 import { Nav } from '../components';
+import whitebg from '../images/whitebg.jpg'
+
 
 
 function Tickets() {
-    const [user, setUser] = useContext(UserContext)
+    const [user] = useContext(UserContext)
 
   return (
-    <div className='flex flex-col gap-14 p-2 items-center h-[100vh] w-[100vw]'>
+    <div
+    style={{ backgroundImage:`url(${whitebg})`, backgroundRepeat:"no-repeat",
+        backgroundSize:"cover"}} 
+    className='flex flex-col gap-14 p-2 items-center h-[100vh] w-[100vw]'>
         <Nav />
         <div className='flex flex-col'>
           <h1 className='sm:text-[60px] text-center text-[30px] font-mono'>Your Tickets</h1>

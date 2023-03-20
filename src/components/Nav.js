@@ -30,7 +30,7 @@ function Nav() {
     }
 }
   return (
-        <div className='flex items-center p-5 mb-2 justify-between w-full h-[5%]'>
+        <div className='flex items-center pl-5 mb-2 justify-between w-full h-[5%]'>
                 <img src={toggle ? menu_closed : menu} alt="" className='sm:hidden block'
                  onClick={() => setToggle(prev => !prev)}/>                 
                  <div className={`${toggle ? "blcok" : 'hidden'}
@@ -72,22 +72,28 @@ function Nav() {
                  </div>
 
           <ul className='sm:flex hidden items-center gap-8 mt-8 justify-center'>
-            <li className='flex flex-col items-center'>
+            <li
+            onClick={() => setUser(prevState => ({...prevState, active:'home'}))}
+            className={`flex flex-col items-center`}>
               <Link to='/reservation' className='flex flex-col items-center'>
               <img src={home} alt="home-icon" className='sm:w-[30px] sm:h-[30px] w-[25px] h-[25px]'/>
-              <h1 className='sm:text-[18px] text-[16px]'>Home</h1>
+              <h1 className={`sm:text-[18px] ${user.userInfo && user.active === 'home' && 'font-extrabold'}  text-[16px]`}>Home</h1>
               </Link>
             </li>
-            <li className='flex flex-col items-center'>              
+            <li
+            onClick={() => setUser(prevState => ({...prevState, active:'profile'}))}
+            className={`flex flex-col items-center`}>              
                 <Link to={`${user.userInfo ? '/profile' : '/'}`} className='flex flex-col items-center'>
                   <img src={profile} alt="profile-icon" className='sm:w-[30px] sm:h-[30px] w-[25px] h-[25px]'/>
-                  <h1 className='sm:text-[18px] text-[16px]'>Profile</h1>
+                  <h1 className={`sm:text-[18px] ${user.userInfo && user.active === 'profile' && 'font-extrabold'} text-[16px]`}>Profile</h1>
                 </Link>
             </li>
-            <li className='flex flex-col items-center'>
+            <li
+            onClick={() => setUser(prevState => ({...prevState, active:'ticket'}))}
+            className={`flex flex-col items-center`}>
               <Link to='/tickets' className='flex flex-col items-center'>
                 <img src={ticket} alt="ticket-icon" className='sm:w-[30px] sm:h-[30px] w-[25px] h-[25px]'/>
-                <h1 className='sm:text-[18px] text-[16px] text-center'>Your Tickets</h1>
+                <h1 className={`sm:text-[18px] ${user.userInfo && user.active === 'ticket' && 'font-extrabold'} text-[16px] text-center`}>Your Tickets</h1>
               </Link>
             </li>
           </ul>

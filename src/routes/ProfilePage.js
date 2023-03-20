@@ -3,6 +3,7 @@ import { Button, Modal, Box, TextField} from '@mui/material';
 import { UserContext } from '..';
 import { Nav } from '../components';
 import profile from '../images/profile.svg'
+import whitebg from '../images/whitebg.jpg'
 
 export default function ProfilePage() {
   const [user, setUser] = useContext(UserContext)
@@ -32,11 +33,15 @@ export default function ProfilePage() {
   }
 
   function logOut(){
-    window.open('/', '_self')
+    setUser(prevState => ({...prevState, active:'home'}))
+    window.open('#/', '_self')
   }
 
   return (
-    <div className=' p-2 items-center justify-center w-[100vw] h-[100vh] overflow-hidden'>
+    <div 
+    style={{ backgroundImage:`url(${whitebg})`, backgroundRepeat:"no-repeat",
+        backgroundSize:"cover"}} 
+    className=' p-2 items-center justify-center w-[100vw] h-[100vh] overflow-hidden'>
       <Modal open={popUp}>
             <Box style={{position:'absolute', top:'30%', right:'40%'}}>
                 <div 
