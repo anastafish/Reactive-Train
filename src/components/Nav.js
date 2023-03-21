@@ -7,28 +7,22 @@ import home from '../images/home.svg'
 import ticket from '../images/ticket.svg'
 import menu from '../images/icon-menu.svg'
 import menu_closed from '../images/icon-menu-close.svg'
+import { useTranslation } from 'react-i18next'
 
-
-
-
-function Nav() {
+function Nav(theme=false) {
+  const { t, i18n } = useTranslation();
 
   const [user, setUser] = useContext(UserContext)
   const [toggle, setToggle] = useState(false)
 
-
-  function handleTheme() {
+  function changeLanguage(e) {
+    i18n.changeLanguage(e.target.value)
     setUser(prevState => ({
-      ...prevState,
-      theme:!user.theme
+      ...prevState, 
+      language:e.target.value
     }))
-    if (user.theme) {
-        document.body.style.background = 'white'
-    }
-    else if (!user.theme) {
-        document.body.style.background = 'gray'
-    }
-}
+  }
+
   return (
         <div className='flex items-center pl-5 mb-2 justify-between w-full h-[5%]'>
                 <img src={toggle ? menu_closed : menu} alt="" className='sm:hidden block'
@@ -43,31 +37,33 @@ function Nav() {
             <li className='flex flex-col items-center'>
               <Link to='/reservation' className='flex flex-col items-center'>
               <img src={home} alt="home-icon" className='sm:w-[30px] sm:h-[30px] w-[25px] h-[25px]'/>
-              <h1 className='sm:text-[18px] text-[16px]'>Home</h1>
+              <h1 className='sm:text-[18px] text-[16px]'>{t('home')}</h1>
               </Link>
             </li>
             <li className='flex flex-col items-center'>              
                 <Link to={`${user.userInfo ? '/profile' : '/'}`} className='flex flex-col items-center'>
                   <img src={profile} alt="profile-icon" className='sm:w-[30px] sm:h-[30px] w-[25px] h-[25px]'/>
-                  <h1 className='sm:text-[18px] text-[16px]'>Profile</h1>
+                  <h1 className='sm:text-[18px] text-[16px]'>{t('profile')}</h1>
                 </Link>
             </li>
             <li className='flex flex-col items-center'>
               <Link to='/tickets' className='flex flex-col items-center'>
                 <img src={ticket} alt="ticket-icon" className='sm:w-[30px] sm:h-[30px] w-[25px] h-[25px]'/>
-                <h1 className='sm:text-[18px] text-[16px] text-center'>Your Tickets</h1>
+                <h1 className='sm:text-[18px] text-[16px] text-center'>{t('your_tickets')}</h1>
               </Link>
             </li>
           </ul>
           <div className='flex items-center'>
-            <Select defaultValue={'Language'} style={{height:'2rem', fontSize:'15px'}}>
-                <MenuItem disabled value='Language'>Language</MenuItem>
-                <MenuItem value='english'>English</MenuItem>
-                <MenuItem value='arabic'>Arabic</MenuItem>
-              </Select>
+          <Select
+             onChange={(e) => changeLanguage(e)} 
+             style={{height:'2rem', fontSize:'15px'}}
+             defaultValue={user.language}
+             >
+              <MenuItem value='en'>English</MenuItem>
+              <MenuItem value='ar'>العربية</MenuItem>
+            </Select>
               <Switch
-                   checked={user.theme}
-                   onClick={handleTheme}/>
+                   checked={user.theme}/>
           </div>
                  </div>
 
@@ -77,7 +73,7 @@ function Nav() {
             className={`flex flex-col items-center`}>
               <Link to='/reservation' className='flex flex-col items-center'>
               <img src={home} alt="home-icon" className='sm:w-[30px] sm:h-[30px] w-[25px] h-[25px]'/>
-              <h1 className={`sm:text-[18px] ${user.userInfo && user.active === 'home' && 'font-extrabold'}  text-[16px]`}>Home</h1>
+              <h1 className={`sm:text-[25px] ${user.userInfo && user.active === 'home' && 'font-extrabold'}  text-[16px]`}>{t('home')}</h1>
               </Link>
             </li>
             <li
@@ -85,7 +81,7 @@ function Nav() {
             className={`flex flex-col items-center`}>              
                 <Link to={`${user.userInfo ? '/profile' : '/'}`} className='flex flex-col items-center'>
                   <img src={profile} alt="profile-icon" className='sm:w-[30px] sm:h-[30px] w-[25px] h-[25px]'/>
-                  <h1 className={`sm:text-[18px] ${user.userInfo && user.active === 'profile' && 'font-extrabold'} text-[16px]`}>Profile</h1>
+                  <h1 className={`sm:text-[25px] ${user.userInfo && user.active === 'profile' && 'font-extrabold'} text-[16px]`}>{t('profile')}</h1>
                 </Link>
             </li>
             <li
@@ -93,7 +89,7 @@ function Nav() {
             className={`flex flex-col items-center`}>
               <Link to='/tickets' className='flex flex-col items-center'>
                 <img src={ticket} alt="ticket-icon" className='sm:w-[30px] sm:h-[30px] w-[25px] h-[25px]'/>
-                <h1 className={`sm:text-[18px] ${user.userInfo && user.active === 'ticket' && 'font-extrabold'} text-[16px] text-center`}>Your Tickets</h1>
+                <h1 className={`sm:text-[25px] ${user.userInfo && user.active === 'ticket' && 'font-extrabold'} text-[16px] text-center`}>{t('your_tickets')}</h1>
               </Link>
             </li>
           </ul>
@@ -103,14 +99,16 @@ function Nav() {
             hidden'>
           <div className='flex gap-2'>
                 <Switch
-                 checked={user.theme}
-                 onClick={handleTheme}/>
+                 checked={user.theme}/>
                  {/* <img src={moon} alt="moon" className='h-[35px] w-[35px]'/> */}
             </div>
-            <Select defaultValue={'Language'} style={{height:'2rem', fontSize:'15px'}}>
-              <MenuItem disabled value='Language'>Language</MenuItem>
-              <MenuItem value='english'>English</MenuItem>
-              <MenuItem value='arabic'>Arabic</MenuItem>
+            <Select
+             onChange={(e) => changeLanguage(e)} 
+             style={{height:'2rem', fontSize:'15px'}}
+             defaultValue={user.language}
+             >
+              <MenuItem value='en'>English</MenuItem>
+              <MenuItem value='ar'>العربية</MenuItem>
             </Select>
           </div>
         </div>

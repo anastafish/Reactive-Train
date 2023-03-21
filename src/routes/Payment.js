@@ -12,11 +12,13 @@ import front from  '../images/bg-card-front.png'
 import back from  '../images/bg-card-back.png'
 import { Nav } from '../components';
 import whitebg from '../images/whitebg.jpg'
+import { useTranslation } from 'react-i18next';
 
 
 
 function Payment() {
-    const steps = ['Reservation', 'Avaliable Trips','Customize Trip', 'Payment']
+    const {t} = useTranslation()
+    const steps = [t('reservation'), t('avaliable_trips'),t('customize_trip'), t('payment')] 
     const [user, setUser] = useContext(UserContext)
     const total = user.trip.split('\n')
     const [payed, setPayed] = useState(false)
@@ -82,25 +84,29 @@ function Payment() {
         const values = Object.values(paymentInfo)
         for (let i = 0; i < values.length; i++){
           if (!values[i]){
-            setError('Complete the missing information please!')
+            setError(t('payment_error_msg'))
             setTimeout(() => setError(''), 5000)
             return 
           }
         }  
         setPayed(true)
+        setUser(prevState => ({
+            ...prevState,
+            active:'ticket'
+        }))
     }
 
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>        
         <Modal open={payed}>
-            <Box style={{position:'absolute', top:'50%', right:'33%'}}>
+            <Box className='absolute sm:top-[50%] top-[40%] sm:right-[33%]' >
                 <div 
                 className='bg-white border-[2px] items-center gap-4
                  flex flex-col border-black p-4 rounded-sm'>
-                    <h1 className='text-[20px]'>The purchese has been successfully proccssed!</h1>
+                    <h1 className='text-[20px] text-center'>{t('payment_msg')}</h1>
                     <Button onClick={() => window.open('#/tickets', '_self')}
                      variant="contained" style={{width:'50%'}}>
-                        Show Tickets
+                        {t('show_tickets')}
                         </Button>
                     </div>
             </Box>
@@ -112,7 +118,7 @@ function Payment() {
      w-[100vw] h-full sm:pt-20 pt-24 pb-2'>   
      {error && <Alert
              severity="warning"
-              className='absolute top-5'
+              className='absolute top-[50%]'
               >{error}</Alert> }   
      <Nav />
         <Stepper style={{width:'100%', margin:'20px'}} activeStep={3} alternativeLabel>
@@ -123,7 +129,7 @@ function Payment() {
           ))}
         </Stepper>
             <div className='flex flex-col items-center gap-5 bg-gray-100 p-4
-             rounded-lg h-full scrol '>
+             rounded-lg h-full bg-opacity-50 scrol '>
                 <Summary
                  from={user.reservation.from}
                   to={user.reservation.to}
@@ -159,30 +165,32 @@ function Payment() {
                     </div>
                     <div className='flex flex-col items-center gap-4'>
                         <div className='flex sm:flex-row flex-col gap-4'>
-                            <TextField name="cardNumber" value={paymentInfo.cardNumber} type='number' onChange={hadnleChange} label='Card Number'/>
-                            <DatePicker views={['year', 'month']} inputProps={{width:'50px'}} na12me='expire' value={paymentInfo.expire}
+                            <TextField name="cardNumber" className='bg-white' value={paymentInfo.cardNumber} type='number' onChange={hadnleChange} label={(t('card_number'))}/>
+                            <DatePicker className='bg-white' views={['year', 'month']} inputProps={{width:'50px'}} na12me='expire' value={paymentInfo.expire}
                              onChange={(e) => setPaymentInfo(prevState => ({...prevState, expire:e}))}
                               label=''/>
                         </div>
                         <div className='flex sm:flex-row flex-col gap-4'>
                             <TextField
+                             className='bg-white'
                              name='cvv'
                              value={paymentInfo.cvv}
                              label='CVV' onChange={hadnleChange}
                              type='number'
                              inputProps={{max:3}}/>
                             <TextField
+                             className='bg-white'
                              autoCapitalize='words'
                              name='cardHolder'
                              value={paymentInfo.cardHolder.toUpperCase()}
-                             onChange={hadnleChange} label="Card Holder's Name"
+                             onChange={hadnleChange} label={t("card_holder")}
                              inputProps={{ maxLength: 20, autoCapitalize:'words' }}
                                 />
                         </div>
                     </div>
                     </div>
             </div>
-                <Button onClick={pay} color='success' variant='contained'>Pay</Button>  
+                <Button onClick={pay} color='success' variant='contained'>{t('pay')}</Button>  
                 <a
               className='absolute bottom-0 left-0 text-black max-w-[200px] text-center'
               target='_blank'

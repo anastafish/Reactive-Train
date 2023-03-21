@@ -6,6 +6,7 @@ import {Login, Signin, Reservation, Trips, Customize, Payment, Tickets, ProfileP
 import './index.css';
 import { useState } from 'react';
 import { ProSidebarProvider } from 'react-pro-sidebar';
+import './i18n/config'
 
 
 const router = createHashRouter([
@@ -51,7 +52,7 @@ export const UserContext = React.createContext();
 
 
 function Context(){
-  const [name, setName] = useState({theme:false, active:'home'})
+  const [name, setName] = useState({theme:false, active:'home', language:'en'})
 
   return (
     <UserContext.Provider value={[name,setName]}>

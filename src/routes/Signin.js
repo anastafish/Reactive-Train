@@ -1,19 +1,30 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { UserContext } from '..';
 import { Link } from "react-router-dom"
-import {  TextField, Button, Alert } from '@mui/material';
+import {  TextField, Button, Alert, Switch, Select, MenuItem} from '@mui/material';
 import bg from '../images/bg.jpg'
 import ClipLoader from "react-spinners/ClipLoader";
+import { useTranslation } from 'react-i18next'
+
 
 
 function Signin() {
+  const { t, i18n } = useTranslation();
+  
+  function changeLanguage(e) {
+    i18n.changeLanguage(e.target.value)
+    setUser(prevState => ({
+      ...prevState, 
+      language:e.target.value
+    }))
+  }
 
   useEffect(() => {
-    setTimeout(() => setLoading(false), 5000)
+    setTimeout(() => setLoading(false), 2000)
   }, []);
 
   const [loading, setLoading] = useState(true)
-  const [, setUser] = useContext(UserContext)
+  const [user, setUser] = useContext(UserContext)
   const [error, setError] = useState('')
 
   const [userInfo, setUserInfo] = useState({
@@ -32,11 +43,11 @@ function Signin() {
 
   function signUp(){
     if (userInfo.password !== userInfo.confirmPassword) {
-      setError("The passwords don't match!")
+      setError(t('signup_password_msg'))
       setTimeout(() => setError(''), 5000)
     }
     else if (!userInfo.name || !userInfo.email || !userInfo.password || !userInfo.confirmPassword){
-      setError("Please fill all the required fields")
+      setError(t('signup_missing_msg'))
       setTimeout(() => setError(''), 5000)
     }
     else {
@@ -60,24 +71,46 @@ function Signin() {
       {!loading && <div
       style={{ backgroundImage:`url(${bg})`, backgroundRepeat:"no-repeat",
        backgroundSize:"cover"}}
-       className='flex flex-col items-center justify-center w-[100vw] h-[100vh] gap-5'>        
+       className='flex flex-col items-center p-5 w-[100vw] h-[100vh] gap-5'>  
+              <div
+           className='sm:flex flex-row
+            justify-center items-center
+            hidden self-end'>
+          <div className='flex gap-2'>
+                <Switch
+                 checked={user.theme}
+                 />
+                 {/* <img src={moon} alt="moon" className='h-[35px] w-[35px]'/> */}
+            </div>
+            <Select
+             onChange={(e) => changeLanguage(e)} 
+             value={user.language}
+             style={{height:'2rem', fontSize:'15px'}}
+             defaultValue={user.language}
+             className="bg-white"
+             >
+              <MenuItem value='en'>English</MenuItem>
+              <MenuItem value='ar'>العربية</MenuItem>
+            </Select>
+          </div>     
         {error && <Alert
                severity="warning"
                 className='absolute top-5'
                 >{error}</Alert> }
            <div className='bg-white bg-opacity-95 rounded-lg p-5
                           flex flex-col items justify-center gap-3
+                          mt-20
           '>
-            <h1 className='text-[33px] self-start font-extrabold'>Sign Up</h1>
+            <h1 className='text-[33px] self-start font-extrabold'>{t('signup')}</h1>
             <div className='flex flex-col gap-2 w-[100%]'>
-                <TextField name='name' autoFocus value={userInfo.name} onChange={handleChange} fullWidth={true} label="Full Name"/>
-                <TextField name='email' value={userInfo.email} onChange={handleChange} label="Email Address"/>
-                <TextField name='password' value={userInfo.password} onChange={handleChange} label="Password" type='password'/>
-                <TextField name='confirmPassword' value={userInfo.confirmPassword} onChange={handleChange} label="Confirm Password" type='password'/>
+                <TextField name='name' autoFocus value={userInfo.name} onChange={handleChange} fullWidth={true} label={t('full_name')}/>
+                <TextField name='email' value={userInfo.email} onChange={handleChange} label={t('email_address')}/>
+                <TextField name='password' value={userInfo.password} onChange={handleChange} label={t('password')} type='password'/>
+                <TextField name='confirmPassword' value={userInfo.confirmPassword} onChange={handleChange} label={t('confirm_password')} type='password'/>
             </div>
-            <Button color='warning' variant="contained" onClick={signUp}>Signup now</Button>
+            <Button color='warning' variant="contained" onClick={signUp}>{t('signup_now')}</Button>
             <Link to={'/login'}>
-                <h4 className='text-blue-400 text-center'>Already have an account?</h4>
+                <h4 className='text-blue-400 text-center'>{t('already_have')}</h4>
             </Link>
             <a className='absolute bottom-0 text-white'
             target='_blank'

@@ -5,11 +5,13 @@ import {  TextField, Button } from '@mui/material';
 import { Nav } from '../components';
 import whitebg from '../images/whitebg.jpg'
 import '../styles/customize.css'
-
+import { useTranslation } from 'react-i18next'
 
 
 function Customize() {
-    const steps = ['Reservation', 'Avaliable Trips','Customize Trip', 'Payment']
+    
+    const {t} = useTranslation()
+    const steps = [t('reservation'), t('avaliable_trips'),t('customize_trip'), t('payment')]
     const [user, setUser] = useContext(UserContext)
     const [luggage, setLuggage] = useState(0)
     const qty = Number(user.reservation.adults) + Number(user.reservation.kids) + Number(user.reservation.special_needs)
@@ -46,16 +48,16 @@ function Customize() {
         window.open('#/payment', '_self')
     }
     else if (seatsId.length > qty) {
-        setError(`Please select ${qty} seat${qty === 1 ? '' : 's'} only`)
+        setError(`${t('please_select')} ${qty} ${t('seat_msg')} ${qty === 1 ? '' : 's'} ${t('only')}`)
         setTimeout(() => setError(''), 5000)
     }
     else if (seatsId.length < qty) {
-        setError(`Please select ${-(seatsId.length - qty)}
-            more seat${ -(seatsId.length - qty) === 1 ? '' : 's'}`)   
+        setError(`${t('please_select')} ${-(seatsId.length - qty)}
+            ${t('more')} ${t('seat_msg')} ${ -(seatsId.length - qty) === 1 ? '' : 's'}`)   
             setTimeout(() => setError(''), 5000)
     }
     else if (!luggage) {
-        setError('Please choose the luggage weight!')
+        setError(t('luggage_weight'))
         setTimeout(() => setError(''), 5000)
     }
    }
@@ -65,7 +67,7 @@ function Customize() {
     style={{ backgroundImage:`url(${whitebg})`, backgroundRepeat:"no-repeat",
         backgroundSize:"cover"}} 
     className='flex flex-col justify-evenly items-center gap-2
-     w-[100vw] sm:h-[100vh] h-full'>
+     w-[100vw] h-full'>
         <Nav />        
          <Stepper style={{width:'100%'}} activeStep={2} alternativeLabel>
           {steps.map((label) => (
@@ -83,15 +85,15 @@ function Customize() {
         <div className='flex justify-between gap-2 w-full p-2 rounded-t-lg items-center bg-red-400'>
                 <div className='flex items-center'>
                     <div className="seat bg-green-800"></div>
-                    <h1 className='sm:text-[20px] text-[15px]'>Your Seat</h1>
+                    <h1 className='sm:text-[20px] text-[15px]'>{t('your_seat')}</h1>
                 </div>
                 <div className='flex items-center'>
                     <div className="seat sold"></div>
-                    <h1 className='sm:text-[20px] text-[15px]'>Reserved</h1>
+                    <h1 className='sm:text-[20px] text-[15px]'>{t('reserved')}</h1>
                 </div>
                 <div className='flex items-center'>
                     <div className="seat "></div>
-                    <h1 className='sm:text-[20px] text-[15px]'>Avaliable</h1>
+                    <h1 className='sm:text-[20px] text-[15px]'>{t('avaliable')}</h1>
                 </div>
             </div>
             <div className="">         
@@ -178,10 +180,10 @@ function Customize() {
                   </div>
                 </div>
                 <div className='flex items-center flex-col'>
-                    <TextField label='Luggage Weight (Kg)' name='luggage'
+                    <TextField label={t('luggage_weight')} name='luggage'
                      type='number' onChange={handleChange} value={luggage} />
                     <Button color='success' variant="contained"
-                     onClick={selectSeats} style={{ margin:'5px'}}>processed to Payment</Button>
+                     onClick={selectSeats} style={{ margin:'5px'}}>{t('processed_payment')}</Button>
                 </div>
         </div>
         <a
