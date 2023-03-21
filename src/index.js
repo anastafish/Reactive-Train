@@ -8,7 +8,6 @@ import { useState } from 'react';
 import { ProSidebarProvider } from 'react-pro-sidebar';
 import './i18n/config'
 
-
 const router = createHashRouter([
   {
     path: "/",
@@ -17,30 +16,39 @@ const router = createHashRouter([
   {
     path: "login/",
     element: <Login />,
+    errorElement: <Signin />
+
   },
   {
     path:'reservation/',
-    element: <Reservation />
+    element: <Reservation />,
+    errorElement: <Signin />
   },
   {
     path:'trips',
-    element: <Trips />
+    element: <Trips />,
+    errorElement: <Signin />
+
   },
   {
     path:'customize',
-    element:<Customize />
+    element:<Customize />,
+    errorElement: <Signin />
   },
   {
     path:'payment',
-    element:<Payment />
+    element:<Payment />,
+    errorElement: <Signin />,    
   },
   {
     path:'tickets',
-    element: <Tickets />
+    element: <Tickets />,
+    errorElement: <Signin />,
   },
   {
     path:'profile',
-    element: <ProfilePage />
+    element: <ProfilePage />,
+    errorElement: <Signin />
   },
   {
     path:'*',
