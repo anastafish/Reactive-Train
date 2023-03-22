@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Alata&display=swap');
+
+p {
+    font-size: 130%;
+	font-family: 'Alata';
+}
+.container
+	{display: flex;
+    }
+	
+.ticket
+	{margin: auto;
+	padding: 0.5eml;
+	border-radius: 10px;
+	background-color: #f7d71c;
+	box-shadow: 0px 8px 60px -10px #ffda79;
+}
+	
+.basic
+	{height:250px;
+	width :220px;
+	border-style:  hidden dashed hidden  hidden;}
+.text
+	{float: right;
+	position: relative;
+	left: -10%;
+}
+
+.fa-barcode
+	{transform: rotate(-90deg) scale(1000%,500%);
+	font-size: 160%;
+	position: relative;
+	top: 47%;
+	left: 20%;}
+.seat,.flight
+{	float : left;
+}
+
+.seat p, h1{
+    font-size: 30px;
+}
+.flight 
+{	float : right;
+}
+.airline
+	{height:250px;
+	width: 450px;
+	background-color: white;
+	font-size: 12px;}
+

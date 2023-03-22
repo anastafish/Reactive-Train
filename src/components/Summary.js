@@ -1,35 +1,75 @@
-import React from 'react'
-import station from '../images/station.jpg'
+import React from "react";
 import moment from "moment";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
+import "../styles/summery.css";
+import barcode from "../images/barcode.png";
+import train from "../images/train.svg";
 
-
-
-function Summary({from, to, seats, qty, total, depart, turn}) {
-    const {t} = useTranslation()
+function Summary({ from, to, seats, qty, total, depart, turn, name, clas, status }) {
+  const { t } = useTranslation();
 
   return (
-    <div className='flex flex-col bg-green-100 rounded-lg
-     p-2 select-none w-full'>
-        <div className='flex items-center gap-2 w-full justify-between'>
-            <img src={station} className='w-[120px] h-[80px] rounded-lg' alt="" />
-              <div className='w-full'>
-                  <h1 className='font-bold sm:text-[22px] text-[18px]'>{total[0]} </h1>
-                  <p className='sm:text-[18px] text-[15px] opacity-50 select-text'>{t('seat')}: {seats.map( seat => `${seat} `)}</p>
-                  <p className='sm:text-[18px] text-[15px] opacity-50'>{t('qty')}:{qty}</p>
-              </div>
-              <div className='flex flex-col items-end justify-center w-full gap-4'>
-                  <p className='sm:text-[20px] text-[16px] opacity-80 select-text text-center font-semibold'>{t('depart')} <br/> {moment(depart).format('DD/MM/YYYY HH:MM')}</p>
-                  {turn !== 'empty' && <p className='sm:text-[20px] text-[16px] opacity-80 text-center font-semibold'>{t('back')}: <br/> {moment(turn).format('DD/MM/YYYY HH:MM')}</p>}
-              </div>
+    <div
+      className="flex flex-col bg-green-100 rounded-lg
+     p-2 select-none"
+    >
+      <div className="container sm:w-full w-[20rem]">
+        <div className="ticket basic flex sm:flex-row flex-col items-center justify-end sm:p-2 p-5">
+          <img src={barcode} alt="" className="sm:rotate-90 rotate-0 h-[50%]" />
+          <div className="text flex flex-col sm:gap-2 gap-1">
+            <h1 className="font-extrabold sm:text-[1.6rem] text-[18px]">{status}</h1>
+
+            <p className="sm:text-[130%] text-[20px]">{t("user_name")}</p>
+            <h1 className="sm:text-[130%] text-[20px] font-extrabold">
+              {name}
+            </h1>
+            <p className="sm:text-[130%] text-[20px]">{t("class")}</p>
+            <h1 className="sm:text-[130%] text-[20px] font-extrabold">
+              {total[0].split(" ")[0]}
+            </h1>
+          </div>
         </div>
-        <h1>{t('from')} {from} {t('to')} {to}</h1>
-        <div className='flex justify-between w-full'>
-            <h1>{t('total_amount')}</h1>
-            <h1 className='font-semibold'>{Number(total[1].split(' ')[1])* qty} <span className='font-bold'>{t('sar')}</span></h1>
+        <div className="ticket airline flex flex-col relative p-3">
+          <div className="item1 flex justify-between p-2 items-center">
+            <div className="from">
+              <p className="sm:text-[2.2rem] text-[20px]">{t("from")}</p>
+              <h1 className="sm:text-[2.2rem] text-[20px] font-extrabold">
+                {from}
+              </h1>
+            </div>
+              <img
+                src={train}
+                alt=""
+                className="absolute left-[40%] sm:w-[100px] sm:h-[100px] w-[60p] h-[60px]"
+              />
+            <div className="to">
+              <p className="sm:text-[2.2rem] text-[20px]">{t("to")}</p>
+              <h1 className="sm:text-[2.2rem] text-[20px] font-extrabold">
+                {to}
+              </h1>
+            </div>
+          </div>
+          <div className="item2 flex sm:flex-row flex-col justify-between items-center">
+            <div className="flex flex-col items-center">
+              <p className="sm:text-[2.2rem] text-[20px]">{t("seat")}</p>
+              <h1 className={`${seats.length > 7 ? "sm:text-[1.1rem] text-[12px]" : "sm:text-[2.2rem] text-[20px]"} font-extrabold`}>
+                {seats.map((seat) => `${seat} `)}
+                {console.log(seats)}
+              </h1>
+            </div>
+            <div className="flex flex-col items-center">
+              <p className="sm:text-[2.2rem] text-[20px]">
+                {t("boarding_time")}
+              </p>
+              <h1 className="sm:text-[2.2rem] text-[20px] font-extrabold">
+                {moment(depart).format("DD/MM/YYYY HH:MM")}
+              </h1>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-  )
+  );
 }
 
-export default Summary
+export default Summary;

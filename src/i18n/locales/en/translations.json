@@ -63,7 +63,10 @@
     "edit_profile":"Edit Profile",
     "logout":"LogOut",
     "save":"Save",
-    "have_tickets_msg":"You Don't Have any tickets!"
+    "have_tickets_msg":"You Don't Have any tickets!",
+    "boarding_time":"Boarding Time",
+    "class":"Class"
+
 
     
 

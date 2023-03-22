@@ -63,7 +63,10 @@
     "edit_profile":"تعديل الحساب",
     "logout":"تسجيل الخروج",
     "save":"حفظ",
-    "have_tickets_msg":"ليس لديك أي تذاكر"
+    "have_tickets_msg":"ليس لديك أي تذاكر",
+    "boarding_time":"موعد الاقلاع",
+    "class":"الفئة"
+
 
 
 
