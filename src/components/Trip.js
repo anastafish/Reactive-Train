@@ -3,6 +3,21 @@ import { UserContext } from "..";
 import { useTranslation } from "react-i18next";
 
 function Trip({ from, to }) {
+  function randomTime() { // min and max included 
+    const num = Math.floor(Math.random() * (12 - 1 + 1) + 1)
+    return [num, num+2]
+  }
+
+  function randomPriceFirst() { // min and max included 
+    return Math.floor(Math.random() * (1500 - 900 + 1) + 900)
+  }
+
+  function randomPriceEco() { // min and max included 
+    return Math.floor(Math.random() * (300 - 150 + 1) + 150)
+  }
+
+
+  const randomNum = randomTime()
   const [, setUser] = useContext(UserContext);
   const { t } = useTranslation();
 
@@ -25,9 +40,9 @@ function Trip({ from, to }) {
       <div className="flex flex-col sm:items-start items-center gap-2 w-[50%]">
         <h1 className="self-start">{t("lowest_rate")}</h1>
         <div className="flex items-center justify-center gap-5">
-          <h1>05:00</h1>
+          <h1>{randomNum[0]}:00</h1>
           <hr className="w-[95px] h-[2px] bg-black text-black text-center" />
-          <h1>06:00</h1>
+          <h1>{randomNum[1]}:00</h1>
         </div>
         <div className="flex items-center justify-center gap-5">
           <h1>{from}</h1>
@@ -43,7 +58,7 @@ function Trip({ from, to }) {
           onClick={tripHandler}
         >
           <h1 className="select-none">{t("economy")}</h1>
-          <h1 className="select-none">{t("sar")} 1600</h1>
+          <h1 className="select-none">{t("sar")} {randomPriceEco()}</h1>
         </div>
 
         <div
@@ -52,7 +67,7 @@ function Trip({ from, to }) {
           onClick={tripHandler}
         >
           <h1 className="select-none">{t("first")}</h1>
-          <h1 className="select-none">{t("sar")} 5000</h1>
+          <h1 className="select-none">{t("sar")} {randomPriceFirst()}</h1>
         </div>
       </div>
     </div>

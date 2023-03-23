@@ -22,7 +22,7 @@
     "special":"Special needs",
     "search":"Search",
     "lowest_rate":"Lowest Rate",
-    "non_stop":"Non-Stop, 1H",
+    "non_stop":"Non-Stop, 2H",
     "economy":"Economy Class",
     "first":"First Class",
     "sar":"SAR",
@@ -65,7 +65,8 @@
     "save":"Save",
     "have_tickets_msg":"You Don't Have any tickets!",
     "boarding_time":"Boarding Time",
-    "class":"Class"
+    "class":"Class",
+    "name":"Name"
 
 
     

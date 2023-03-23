@@ -41,7 +41,7 @@ function Nav(theme = false) {
       >
         <ul className="sm:hidden flex items-center justify-center gap-6">
           <li className="flex flex-col items-center">
-            <Link to="/reservation" className="flex flex-col items-center">
+            <Link to={`${user.userInfo ? "/reservation" : "/"}`} className="flex flex-col items-center">
               <img
                 src={home}
                 alt="home-icon"
@@ -64,7 +64,7 @@ function Nav(theme = false) {
             </Link>
           </li>
           <li className="flex flex-col items-center">
-            <Link to="/tickets" className="flex flex-col items-center">
+            <Link to={`${user.userInfo ? "/tickets" : "/"}`} className="flex flex-col items-center">
               <img
                 src={ticket}
                 alt="ticket-icon"
@@ -96,7 +96,7 @@ function Nav(theme = false) {
           }
           className={`flex flex-col items-center`}
         >
-          <Link to="/reservation" className="flex flex-col items-center">
+          <Link to={`${user.userInfo ? "/reservation" : "/"}`} className="flex flex-col items-center">
             <img
               src={home}
               alt="home-icon"
@@ -141,7 +141,7 @@ function Nav(theme = false) {
           }
           className={`flex flex-col items-center`}
         >
-          <Link to="/tickets" className="flex flex-col items-center">
+          <Link to={`${user.userInfo ? "/tickets" : "/"}`} className="flex flex-col items-center">
             <img
               src={ticket}
               alt="ticket-icon"

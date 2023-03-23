@@ -4,6 +4,7 @@
   "homepage": "https://anastafish.github.io/Reactive-Train",
   "private": true,
   "dependencies": {
+    "@babel/plugin-syntax-class-properties": "^7.12.13",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@mui/material": "^5.11.13",
@@ -25,6 +26,7 @@
     "react-router-dom": "^6.9.0",
     "react-scripts": "5.0.1",
     "react-spinners": "^0.13.8",
+    "reveal-on-scroll-react": "^0.0.6",
     "sort-by": "^1.2.0",
     "web-vitals": "^2.1.4"
   },

@@ -17,9 +17,9 @@ function Summary({ from, to, seats, qty, total, depart, turn, name, clas, status
         <div className="ticket basic flex sm:flex-row flex-col items-center justify-end sm:p-2 p-5">
           <img src={barcode} alt="" className="sm:rotate-90 rotate-0 h-[50%]" />
           <div className="text flex flex-col sm:gap-2 gap-1">
-            <h1 className="font-extrabold sm:text-[1.6rem] text-[18px]">{status}</h1>
+            <h1 className={`font-extrabold ${status === "Depart" ?"text-green-700" : "text-red-600"} sm:text-[1.6rem] text-[18px]`}>{status}</h1>
 
-            <p className="sm:text-[130%] text-[20px]">{t("user_name")}</p>
+            <p className="sm:text-[130%] text-[20px]">{t("name")}</p>
             <h1 className="sm:text-[130%] text-[20px] font-extrabold">
               {name}
             </h1>
