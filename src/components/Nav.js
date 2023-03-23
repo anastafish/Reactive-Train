@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import profile from "../images/profile.svg";
 import home from "../images/home.svg";
 import ticket from "../images/ticket.svg";
+import moon from "../images/moon.png"
 import menu from "../images/icon-menu.svg";
 import menu_closed from "../images/icon-menu-close.svg";
 import { useTranslation } from "react-i18next";
@@ -21,6 +22,13 @@ function Nav(theme = false) {
       ...prevState,
       language: e.target.value,
     }));
+  }
+
+  function handleChange(){
+    setUser(prevState => ({
+      ...prevState,
+      theme:!user.theme
+    }))
   }
 
   return (
@@ -85,7 +93,11 @@ function Nav(theme = false) {
             <MenuItem value="en">English</MenuItem>
             <MenuItem value="ar">العربية</MenuItem>
           </Select>
-          <Switch checked={user.theme} />
+          <Switch
+           checked={user.theme}
+           onChange={handleChange}
+           />
+          <img src={moon} alt="moon" className='h-[25px] w-[25px]'/>
         </div>
       </div>
 
@@ -160,11 +172,14 @@ function Nav(theme = false) {
       <div
         className="sm:flex flex-row
             justify-center items-center
-            hidden"
+            hidden gap-2" 
       >
-        <div className="flex gap-2">
-          <Switch checked={user.theme} />
-          {/* <img src={moon} alt="moon" className='h-[35px] w-[35px]'/> */}
+        <div className="flex">
+          <Switch
+           checked={user.theme}
+           onChange={handleChange}
+           />
+          <img src={moon} alt="moon" className='h-[27px] w-[27px]'/>
         </div>
         <Select
           onChange={(e) => changeLanguage(e)}

@@ -21,6 +21,7 @@ import front from "../images/bg-card-front.png";
 import back from "../images/bg-card-back.png";
 import { Nav } from "../components";
 import whitebg from "../images/whitebg.jpg";
+import darkbg from "../images/darkbg.jpg"
 import { useTranslation } from "react-i18next";
 
 function Payment() {
@@ -63,18 +64,15 @@ function Payment() {
         [e.target.name]: e.target.value.slice(0, 20),
       }));
     }
-
-    console.log(paymentInfo);
   }
 
   function pay() {
-    console.log(user.way)
-    if (!user.tickets && user.way === 'oneway') {
+    if (!user.tickets && user.way === "oneway") {
       setUser((prevState) => ({
         ...prevState,
         tickets: [
           {
-            status:'Depart',
+            status: "Depart",
             from: user.reservation.from,
             to: user.reservation.to,
             seats: user.custom.seats,
@@ -82,16 +80,15 @@ function Payment() {
             total: total,
             depart: user.reservation.depart,
             turn: user.reservation.return,
-          },          
+          },
         ],
       }));
-    }
-    else if (!user.tickets && user.way === 'return') {
+    } else if (!user.tickets && user.way === "return") {
       setUser((prevState) => ({
         ...prevState,
         tickets: [
           {
-            status:'Depart',
+            status: "Depart",
             from: user.reservation.from,
             to: user.reservation.to,
             seats: user.custom.seats,
@@ -101,7 +98,7 @@ function Payment() {
             turn: user.reservation.return,
           },
           {
-            status:'Return',
+            status: "Return",
             from: user.reservation.to,
             to: user.reservation.from,
             seats: user.custom.seats,
@@ -109,18 +106,16 @@ function Payment() {
             total: total,
             depart: user.reservation.return,
             turn: user.reservation.return,
-          }
+          },
         ],
       }));
-    }
-
-    else if (user.tickets && user.way === 'return') {
+    } else if (user.tickets && user.way === "return") {
       setUser((prevState) => ({
         ...prevState,
         tickets: [
           ...prevState.tickets,
           {
-            status:'Depart',
+            status: "Depart",
             from: user.reservation.from,
             to: user.reservation.to,
             seats: user.custom.seats,
@@ -130,7 +125,7 @@ function Payment() {
             turn: user.reservation.return,
           },
           {
-            status:'Return',
+            status: "Return",
             from: user.reservation.to,
             to: user.reservation.from,
             seats: user.custom.seats,
@@ -138,17 +133,16 @@ function Payment() {
             total: total,
             depart: user.reservation.return,
             turn: user.reservation.return,
-          }
+          },
         ],
       }));
-    }
-     else {
+    } else {
       setUser((prevState) => ({
         ...prevState,
         tickets: [
           ...prevState.tickets,
           {
-            status:'Depart',
+            status: "Depart",
             from: user.reservation.from,
             to: user.reservation.to,
             seats: user.custom.seats,
@@ -199,14 +193,18 @@ function Payment() {
     w-[100vw] h-[100vh]"
       >
         {error && (
-          <Alert severity="warning" className="absolute top-[50%]">
+          <Alert
+            severity="warning"
+            className="absolute top-[50%]"
+            style={{ fontSize: "1.2rem", zIndex:9 }}
+          >
             {error}
           </Alert>
         )}
         <div
           className="flex flex-col justify-between gap-2 p-2 items-center sm:h-auto h-full w-full"
           style={{
-            backgroundImage: `url(${whitebg})`,
+            backgroundImage: `url(${user.theme ? darkbg : whitebg})`,
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
           }}
@@ -321,22 +319,14 @@ function Payment() {
                     onChange={hadnleChange}
                     label={t("card_holder")}
                     inputProps={{ maxLength: 20, autoCapitalize: "words" }}
-                  />                  
-                </div>               
-              </div>              
-            </div>            
-          </div>   
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
           <Button onClick={pay} color="success" variant="contained">
             {t("pay")}
           </Button>
-          {/* <a
-            className="absolute bottom-0 left-0 text-black max-w-[200px] text-center"
-            target="_blank"
-            rel="noreferrer"
-            href="https://www.freepik.com/free-photo/white-painted-wall-texture-background_18416494.htm#page=2&query=website%20background&position=0&from_view=search&track=ais"
-          >
-            background by rawpixel.com on Freepik
-          </a>        */}
         </div>
       </div>
     </LocalizationProvider>

@@ -54,7 +54,6 @@ function Summary({ from, to, seats, qty, total, depart, turn, name, clas, status
               <p className="sm:text-[2.2rem] text-[20px]">{t("seat")}</p>
               <h1 className={`${seats.length > 7 ? "sm:text-[1.1rem] text-[12px]" : "sm:text-[2.2rem] text-[20px]"} font-extrabold`}>
                 {seats.map((seat) => `${seat} `)}
-                {console.log(seats)}
               </h1>
             </div>
             <div className="flex flex-col items-center">

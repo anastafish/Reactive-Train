@@ -4,16 +4,16 @@ import { Stepper, StepLabel, Step, Alert } from "@mui/material";
 import { TextField, Button } from "@mui/material";
 import { Nav } from "../components";
 import whitebg from "../images/whitebg.jpg";
+import darkbg from "../images/darkbg.jpg"
 import "../styles/customize.css";
 import { useTranslation } from "react-i18next";
 
 function Customize() {
-
-  function random(){
-    const num =  Math.random() * 2
-    return num > 1 ?  true : false 
+  
+  function random() {
+    const num = Math.random() * 2;
+    return num > 1 ? "sold cursor-not-allowed" : "" 
   }
-
 
   const { t } = useTranslation();
   const steps = [
@@ -25,9 +25,8 @@ function Customize() {
   const [user, setUser] = useContext(UserContext);
   const luggage = useRef(0);
 
-  function handleChange(e){
-    console.log(e.target.value)
-    luggage.current.value = e.target.value
+  function handleChange(e) {
+    luggage.current.value = e.target.value;
   }
 
   const qty =
@@ -38,13 +37,10 @@ function Customize() {
 
   function handleClick(e) {
     if (e.target.className === `seat sold cursor-not-allowed`) {
-      return
-    }
-    else if (e.target.className === 'seat selected') {
-      e.target.className = 'seat'
-    }
-    
-    else {
+      return;
+    } else if (e.target.className === "seat selected") {
+      e.target.className = "seat";
+    } else {
       e.target.className = "seat selected";
     }
   }
@@ -63,7 +59,6 @@ function Customize() {
           luggage: luggage.current.value,
         },
       }));
-      console.log(user);
       window.open("#/payment", "_self");
     } else if (seatsId.length > qty) {
       setError(
@@ -92,7 +87,7 @@ function Customize() {
       <div
         className="flex flex-col justify-between p-2 gap-2 items-center w-full"
         style={{
-          backgroundImage: `url(${whitebg})`,
+          backgroundImage: `url(${user.theme ? darkbg : whitebg})`,
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
         }}
@@ -106,7 +101,11 @@ function Customize() {
           ))}
         </Stepper>
         {error && (
-          <Alert severity="warning" className="absolute top-5">
+          <Alert
+            severity="warning"
+            className="absolute top-5"
+            style={{ fontSize: "1.2rem" }}
+          >
             {error}
           </Alert>
         )}
@@ -135,79 +134,259 @@ function Customize() {
               <h1>C</h1>
               <h1>D</h1>
               <h1>E</h1>
-            </div>           
+            </div>
 
             <div className="row">
               <h1 className="mr-1 text-[20px]">1</h1>
-              <div className={`seat ${random() ? "sold cursor-not-allowed" : ""}`} id="A1" onClick={handleClick}></div>
-              <div className={`seat ${random() ? "sold cursor-not-allowed" : ""}`} id="B1" onClick={handleClick}></div>
-              <div className={`seat ${random() ? "sold cursor-not-allowed" : ""}`} id="C1" onClick={handleClick}></div>
-              <div className={`seat ${random() ? "sold cursor-not-allowed" : ""}`} id="D1" onClick={handleClick}></div>
-              <div className={`seat ${random() ? "sold cursor-not-allowed" : ""}`} id="E1" onClick={handleClick}></div>
+              <div
+                className={`seat ${(e) => random(e)}` }
+                id="A1"
+                onClick={handleClick}
+              ></div>
+              <div
+                className={`seat ${random()}` }
+                id="B1"
+                onClick={handleClick}
+              ></div>
+              <div
+                className={`seat ${random()}` }
+                id="C1"
+                onClick={handleClick}
+              ></div>
+              <div
+                className={`seat ${random()}` }
+                id="D1"
+                onClick={handleClick}
+              ></div>
+              <div
+                className={`seat ${random()}` }
+                id="E1"
+                onClick={handleClick}
+              ></div>
             </div>
             <div className="row">
               <h1 className="mr-1 text-[20px]">2</h1>
-              <div className={`seat ${random() ? "sold cursor-not-allowed" : ""}`} id="A2" onClick={handleClick}></div>
-              <div className={`seat ${random() ? "sold cursor-not-allowed" : ""}`} id="B2" onClick={handleClick}></div>
-              <div className={`seat ${random() ? "sold cursor-not-allowed" : ""}`} id="C2" onClick={handleClick}></div>
-              <div className={`seat ${random() ? "sold cursor-not-allowed" : ""}`} id="D2" onClick={handleClick}></div>
-              <div className={`seat ${random() ? "sold cursor-not-allowed" : ""}`} id="E2" onClick={handleClick}></div>
+              <div
+                className={`seat ${random()}` }
+                id="A2"
+                onClick={handleClick}
+              ></div>
+              <div
+                className={`seat ${random()}` }
+                id="B2"
+                onClick={handleClick}
+              ></div>
+              <div
+                className={`seat ${random()}` }
+                id="C2"
+                onClick={handleClick}
+              ></div>
+              <div
+                className={`seat ${random()}` }
+                id="D2"
+                onClick={handleClick}
+              ></div>
+              <div
+                className={`seat ${random()}` }
+                id="E2"
+                onClick={handleClick}
+              ></div>
             </div>
             <div className="row">
               <h1 className="mr-1 text-[20px]">3</h1>
-              <div className={`seat ${random() ? "sold cursor-not-allowed" : ""}`} id="A3" onClick={handleClick}></div>
-              <div className={`seat ${random() ? "sold cursor-not-allowed" : ""}`} id="B3" onClick={handleClick}></div>
-              <div className={`seat ${random() ? "sold cursor-not-allowed" : ""}`} id="C3" onClick={handleClick}></div>
-              <div className={`seat ${random() ? "sold cursor-not-allowed" : ""}`} id="D3" onClick={handleClick}></div>
-              <div className={`seat ${random() ? "sold cursor-not-allowed" : ""}`} id="E3" onClick={handleClick}></div>
+              <div
+                className={`seat ${random()}` }
+                id="A3"
+                onClick={handleClick}
+              ></div>
+              <div
+                className={`seat ${random()}` }
+                id="B3"
+                onClick={handleClick}
+              ></div>
+              <div
+                className={`seat ${random()}` }
+                id="C3"
+                onClick={handleClick}
+              ></div>
+              <div
+                className={`seat ${random()}` }
+                id="D3"
+                onClick={handleClick}
+              ></div>
+              <div
+                className={`seat ${random()}` }
+                id="E3"
+                onClick={handleClick}
+              ></div>
             </div>
             <div className="row">
               <h1 className="mr-1 text-[20px]">4</h1>
-              <div className={`seat ${random() ? "sold cursor-not-allowed" : ""}`} id="A4" onClick={handleClick}></div>
-              <div className={`seat ${random() ? "sold cursor-not-allowed" : ""}`} id="B4" onClick={handleClick}></div>
-              <div className={`seat ${random() ? "sold cursor-not-allowed" : ""}`} id="C4" onClick={handleClick}></div>
-              <div className={`seat ${random() ? "sold cursor-not-allowed" : ""}`} id="D4" onClick={handleClick}></div>
-              <div className={`seat ${random() ? "sold cursor-not-allowed" : ""}`} id="E4" onClick={handleClick}></div>
+              <div
+                className={`seat ${random()}` }
+                id="A4"
+                onClick={handleClick}
+              ></div>
+              <div
+                className={`seat ${random()}` }
+                id="B4"
+                onClick={handleClick}
+              ></div>
+              <div
+                className={`seat ${random()}` }
+                id="C4"
+                onClick={handleClick}
+              ></div>
+              <div
+                className={`seat ${random()}` }
+                id="D4"
+                onClick={handleClick}
+              ></div>
+              <div
+                className={`seat ${random()}` }
+                id="E4"
+                onClick={handleClick}
+              ></div>
             </div>
             <div className="row">
               <h1 className="mr-1 text-[20px]">5</h1>
-              <div className={`seat ${random() ? "sold cursor-not-allowed" : ""}`} id="A5" onClick={handleClick}></div>
-              <div className={`seat ${random() ? "sold cursor-not-allowed" : ""}`} id="B5" onClick={handleClick}></div>
-              <div className={`seat ${random() ? "sold cursor-not-allowed" : ""}`} id="C5" onClick={handleClick}></div>
-              <div className={`seat ${random() ? "sold cursor-not-allowed" : ""}`} id="D5" onClick={handleClick}></div>
-              <div className={`seat ${random() ? "sold cursor-not-allowed" : ""}`} id="E5" onClick={handleClick}></div>
+              <div
+                className={`seat ${random()}` }
+                id="A5"
+                onClick={handleClick}
+              ></div>
+              <div
+                className={`seat ${random()}` }
+                id="B5"
+                onClick={handleClick}
+              ></div>
+              <div
+                className={`seat ${random()}` }
+                id="C5"
+                onClick={handleClick}
+              ></div>
+              <div
+                className={`seat ${random()}` }
+                id="D5"
+                onClick={handleClick}
+              ></div>
+              <div
+                className={`seat ${random()}` }
+                id="E5"
+                onClick={handleClick}
+              ></div>
             </div>
             <div className="row">
               <h1 className="mr-1 text-[20px]">6</h1>
-              <div className={`seat ${random() ? "sold cursor-not-allowed" : ""}`} id="A6" onClick={handleClick}></div>
-              <div className={`seat ${random() ? "sold cursor-not-allowed" : ""}`} id="B6" onClick={handleClick}></div>
-              <div className={`seat ${random() ? "sold cursor-not-allowed" : ""}`} id="C6" onClick={handleClick}></div>
-              <div className={`seat ${random() ? "sold cursor-not-allowed" : ""}`} id="D6" onClick={handleClick}></div>
-              <div className={`seat ${random() ? "sold cursor-not-allowed" : ""}`} id="E6" onClick={handleClick}></div>
+              <div
+                className={`seat ${random()}` }
+                id="A6"
+                onClick={handleClick}
+              ></div>
+              <div
+                className={`seat ${random()}` }
+                id="B6"
+                onClick={handleClick}
+              ></div>
+              <div
+                className={`seat ${random()}` }
+                id="C6"
+                onClick={handleClick}
+              ></div>
+              <div
+                className={`seat ${random()}` }
+                id="D6"
+                onClick={handleClick}
+              ></div>
+              <div
+                className={`seat ${random()}` }
+                id="E6"
+                onClick={handleClick}
+              ></div>
             </div>
             <div className="row">
               <h1 className="mr-1 text-[20px]">7</h1>
-              <div className={`seat ${random() ? "sold cursor-not-allowed" : ""}`}id="A7" onClick={handleClick}></div>
-              <div className={`seat ${random() ? "sold cursor-not-allowed" : ""}`}id="B7" onClick={handleClick}></div>
-              <div className={`seat ${random() ? "sold cursor-not-allowed" : ""}`}id="C7" onClick={handleClick}></div>
-              <div className={`seat ${random() ? "sold cursor-not-allowed" : ""}`}id="D7" onClick={handleClick}></div>
-              <div className={`seat ${random() ? "sold cursor-not-allowed" : ""}`}id="E7" onClick={handleClick}></div>
+              <div
+                className={`seat ${random()}` }
+                id="A7"
+                onClick={handleClick}
+              ></div>
+              <div
+                className={`seat ${random()}` }
+                id="B7"
+                onClick={handleClick}
+              ></div>
+              <div
+                className={`seat ${random()}` }
+                id="C7"
+                onClick={handleClick}
+              ></div>
+              <div
+                className={`seat ${random()}` }
+                id="D7"
+                onClick={handleClick}
+              ></div>
+              <div
+                className={`seat ${random()}` }
+                id="E7"
+                onClick={handleClick}
+              ></div>
             </div>
             <div className="row">
               <h1 className="mr-1 text-[20px]">8</h1>
-              <div className={`seat ${random() ? "sold cursor-not-allowed" : ""}`} id="A8" onClick={handleClick}></div>
-              <div className={`seat ${random() ? "sold cursor-not-allowed" : ""}`} id="B8" onClick={handleClick}></div>
-              <div className={`seat ${random() ? "sold cursor-not-allowed" : ""}`} id="C8" onClick={handleClick}></div>
-              <div className={`seat ${random() ? "sold cursor-not-allowed" : ""}`} id="D8" onClick={handleClick}></div>
-              <div className={`seat ${random() ? "sold cursor-not-allowed" : ""}`} id="E8" onClick={handleClick}></div>
+              <div
+                className={`seat ${random()}` }
+                id="A8"
+                onClick={handleClick}
+              ></div>
+              <div
+                className={`seat ${random()}` }
+                id="B8"
+                onClick={handleClick}
+              ></div>
+              <div
+                className={`seat ${random()}` }
+                id="C8"
+                onClick={handleClick}
+              ></div>
+              <div
+                className={`seat ${random()}` }
+                id="D8"
+                onClick={handleClick}
+              ></div>
+              <div
+                className={`seat ${random()}` }
+                id="E8"
+                onClick={handleClick}
+              ></div>
             </div>
             <div className="row">
               <h1 className="mr-1 text-[20px]">9</h1>
-              <div className={`seat ${random() ? "sold cursor-not-allowed" : ""}`}id="A9" onClick={handleClick}></div>
-              <div className={`seat ${random() ? "sold cursor-not-allowed" : ""}`}id="B9" onClick={handleClick}></div>
-              <div className={`seat ${random() ? "sold cursor-not-allowed" : ""}`}id="C9" onClick={handleClick}></div>
-              <div className={`seat ${random() ? "sold cursor-not-allowed" : ""}`}id="D9" onClick={handleClick}></div>
-              <div className={`seat ${random() ? "sold cursor-not-allowed" : ""}`}id="E9" onClick={handleClick}></div>
+              <div
+                className={`seat ${random()}` }
+                id="A9"
+                onClick={handleClick}
+              ></div>
+              <div
+                className={`seat ${random()}` }
+                id="B9"
+                onClick={handleClick}
+              ></div>
+              <div
+                className={`seat ${random()}` }
+                id="C9"
+                onClick={handleClick}
+              ></div>
+              <div
+                className={`seat ${random()}` }
+                id="D9"
+                onClick={handleClick}
+              ></div>
+              <div
+                className={`seat ${random()}` }
+                id="E9"
+                onClick={handleClick}
+              ></div>
             </div>
           </div>
           <div className="flex items-center flex-col">
@@ -228,14 +407,6 @@ function Customize() {
             </Button>
           </div>
         </div>
-        <a
-          className="absolute bottom-0 left-0 text-black max-w-[200px] text-center"
-          target="_blank"
-          rel="noreferrer"
-          href="https://www.freepik.com/free-photo/white-painted-wall-texture-background_18416494.htm#page=2&query=website%20background&position=0&from_view=search&track=ais"
-        >
-          background by rawpixel.com on Freepik
-        </a>
       </div>
     </div>
   );

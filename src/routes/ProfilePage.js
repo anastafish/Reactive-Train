@@ -3,7 +3,8 @@ import { Button, Modal, Box, TextField } from "@mui/material";
 import { UserContext } from "..";
 import { Nav } from "../components";
 import profile from "../images/profile.svg";
-import whitebg from "../images/whitebg.jpg";
+import whitebg from "../images/whitebg2.jpg";
+import darkbg from "../images/darkbg.jpg"
 import { useTranslation } from "react-i18next";
 
 export default function ProfilePage() {
@@ -31,7 +32,6 @@ export default function ProfilePage() {
       userInfo: newUserInfo,
     }));
     setPopUp(false);
-    console.log(user);
   }
 
   function logOut() {
@@ -42,7 +42,7 @@ export default function ProfilePage() {
   return (
     <div
       style={{
-        backgroundImage: `url(${whitebg})`,
+        backgroundImage: `url(${user.theme ? darkbg : whitebg})`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
       }}

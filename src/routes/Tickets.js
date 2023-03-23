@@ -2,7 +2,8 @@ import React, { useContext } from "react";
 import { UserContext } from "..";
 import Summary from "../components/Summary";
 import { Nav } from "../components";
-import whitebg from "../images/whitebg.jpg";
+import whitebg from "../images/whitebg2.jpg";
+import darkbg from "../images/darkbg.jpg"
 import { useTranslation } from "react-i18next";
 
 function Tickets() {
@@ -12,7 +13,7 @@ function Tickets() {
   return (
     <div
       style={{
-        backgroundImage: `url(${whitebg})`,
+        backgroundImage: `url(${user.theme ? darkbg : whitebg})`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
       }}
@@ -24,7 +25,7 @@ function Tickets() {
       </h1>
       <div className="flex flex-col gap-5 p-5 items-center overflow-y-scroll scrol">
         {user.tickets ? (
-          user.tickets.map((ticket) => (
+          user.tickets.map((ticket, index) => (
             <Summary
               from={ticket.from}
               to={ticket.to}
@@ -36,6 +37,7 @@ function Tickets() {
               name={user.userInfo.name}
               clas={user.trip}
               status={ticket.status}
+              key={index}
               // key={}
             />
           ))

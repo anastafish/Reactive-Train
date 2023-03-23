@@ -5,12 +5,11 @@ import {
   TextField,
   Button,
   Alert,
-  Switch,
   MenuItem,
   Select,
 } from "@mui/material";
 import { useState } from "react";
-import bg from "../images/bg.jpg";
+import bg from '../images/bg.jpg'
 import { useTranslation } from "react-i18next";
 
 function Login() {
@@ -74,8 +73,6 @@ function Login() {
             hidden self-end"
       >
         <div className="flex gap-2">
-          <Switch checked={user.theme} />
-          {/* <img src={moon} alt="moon" className='h-[35px] w-[35px]'/> */}
         </div>
         <Select
           onChange={(e) => changeLanguage(e)}
@@ -89,7 +86,11 @@ function Login() {
         </Select>
       </div>
       {error && (
-        <Alert severity="warning" className="absolute top-5">
+        <Alert
+          severity="warning"
+          className="absolute top-5"
+          style={{ fontSize: "1.2rem" }}
+        >
           {error}
         </Alert>
       )}
@@ -106,6 +107,7 @@ function Login() {
             onChange={handleChange}
             label={t("email_address")}
             type="email"
+            onKeyDown={(e) => e.key === "Enter" && login()}
           />
           <TextField
             name="password"
@@ -113,6 +115,7 @@ function Login() {
             onChange={handleChange}
             label={t("password")}
             type="password"
+            onKeyDown={(e) => e.key === "Enter" && login()}
           />
         </div>
 

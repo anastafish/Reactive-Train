@@ -14,12 +14,13 @@ import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { DateTimePicker } from "@mui/x-date-pickers";
 import { Nav } from "../components";
-import whitebg from "../images/whitebg.jpg";
+import whitebg from "../images/whitebg2.jpg";
+import darkbg from "../images/darkbg.jpg";
 import "../styles/reservation.css";
 import { useTranslation } from "react-i18next";
 
 function Reservation() {
-  const [, setUser] = useContext(UserContext);
+  const [user, setUser] = useContext(UserContext);
   const { t } = useTranslation();
   const [trip, setTrip] = useState("return");
   const cities = [
@@ -45,7 +46,6 @@ function Reservation() {
       ...prevState,
       [e.target.name]: e.target.value,
     }));
-    console.log(reservation);
   }
 
   function handleChange(e) {
@@ -57,7 +57,7 @@ function Reservation() {
       ...prevState,
       reservation: reservation,
       active: "",
-      way:trip
+      way: trip,
     }));
     const values = Object.values(reservation);
     for (let i = 0; i < values.length; i++) {
@@ -82,7 +82,7 @@ function Reservation() {
       <div className="flex flex-col h-[100vh] w-[100vw] items-center">
         {error && (
           <Alert
-            style={{ zIndex: 9 }}
+            style={{ zIndex: 9, fontSize: "1.2rem" }}
             severity="warning"
             className="absolute top-5"
           >
@@ -92,7 +92,7 @@ function Reservation() {
         <div
           className="flex flex-col justify-between gap-2 p-2 items-center h-full w-full"
           style={{
-            backgroundImage: `url(${whitebg})`,
+            backgroundImage: `url(${user.theme ? darkbg : whitebg})`,
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
           }}
@@ -145,7 +145,8 @@ function Reservation() {
                   ))}
               </Select>
             </div>
-            <div className="flex w-full items-center sm:flex-row flex-col sm:gap-0 gap-2">
+            <div className="flex w-full items-center justify-center
+             sm:flex-row flex-col sm:gap-0 gap-2">
               <Select
                 onChange={handleChange}
                 defaultValue={"return"}
@@ -215,11 +216,6 @@ function Reservation() {
               >
                 {t("search")}
               </Button>
-              {/* <a
-                className='absolute bottom-0 left-0 text-black max-w-[200px] text-center'
-                target='_blank'
-                rel="noreferrer"
-                href="https://www.freepik.com/free-photo/white-painted-wall-texture-background_18416494.htm#page=2&query=website%20background&position=0&from_view=search&track=ais">background by rawpixel.com on Freepik</a>        */}
             </div>
           </div>
         </div>

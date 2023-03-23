@@ -26,7 +26,6 @@ function Trip({ from, to }) {
       ...prevState,
       trip: e.target.parentElement.innerText,
     }));
-    console.log(e.target.parentElement.innerText);
     window.open("#/customize", "_self");
   }
 
