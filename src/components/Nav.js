@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import profile from "../images/profile.svg";
 import home from "../images/home.svg";
 import ticket from "../images/ticket.svg";
-import moon from "../images/moon.png"
+import moon from "../images/moon.png";
 import menu from "../images/icon-menu.svg";
 import menu_closed from "../images/icon-menu-close.svg";
 import { useTranslation } from "react-i18next";
@@ -24,11 +24,11 @@ function Nav(theme = false) {
     }));
   }
 
-  function handleChange(){
-    setUser(prevState => ({
+  function handleChange() {
+    setUser((prevState) => ({
       ...prevState,
-      theme:!user.theme
-    }))
+      theme: !user.theme,
+    }));
   }
 
   return (
@@ -49,7 +49,10 @@ function Nav(theme = false) {
       >
         <ul className="sm:hidden flex items-center justify-center gap-6">
           <li className="flex flex-col items-center">
-            <Link to={`${user.userInfo ? "/reservation" : "/"}`} className="flex flex-col items-center">
+            <Link
+              to={`${user.userInfo ? "/reservation" : "/"}`}
+              className="flex flex-col items-center"
+            >
               <img
                 src={home}
                 alt="home-icon"
@@ -72,7 +75,10 @@ function Nav(theme = false) {
             </Link>
           </li>
           <li className="flex flex-col items-center">
-            <Link to={`${user.userInfo ? "/tickets" : "/"}`} className="flex flex-col items-center">
+            <Link
+              to={`${user.userInfo ? "/tickets" : "/"}`}
+              className="flex flex-col items-center"
+            >
               <img
                 src={ticket}
                 alt="ticket-icon"
@@ -93,11 +99,8 @@ function Nav(theme = false) {
             <MenuItem value="en">English</MenuItem>
             <MenuItem value="ar">العربية</MenuItem>
           </Select>
-          <Switch
-           checked={user.theme}
-           onChange={handleChange}
-           />
-          <img src={moon} alt="moon" className='h-[25px] w-[25px]'/>
+          <Switch checked={user.theme} onChange={handleChange} />
+          <img src={moon} alt="moon" className="h-[25px] w-[25px]" />
         </div>
       </div>
 
@@ -108,7 +111,10 @@ function Nav(theme = false) {
           }
           className={`flex flex-col items-center`}
         >
-          <Link to={`${user.userInfo ? "/reservation" : "/"}`} className="flex flex-col items-center">
+          <Link
+            to={`${user.userInfo ? "/reservation" : "/"}`}
+            className="flex flex-col items-center hover:bg-gray-300 px-2 rounded-md"
+          >
             <img
               src={home}
               alt="home-icon"
@@ -131,7 +137,7 @@ function Nav(theme = false) {
         >
           <Link
             to={`${user.userInfo ? "/profile" : "/"}`}
-            className="flex flex-col items-center"
+            className="flex flex-col items-center hover:bg-gray-300 px-2 rounded-md"
           >
             <img
               src={profile}
@@ -153,7 +159,10 @@ function Nav(theme = false) {
           }
           className={`flex flex-col items-center`}
         >
-          <Link to={`${user.userInfo ? "/tickets" : "/"}`} className="flex flex-col items-center">
+          <Link
+            to={`${user.userInfo ? "/tickets" : "/"}`}
+            className="flex flex-col items-center hover:bg-gray-300 px-2 rounded-md"
+          >
             <img
               src={ticket}
               alt="ticket-icon"
@@ -172,14 +181,11 @@ function Nav(theme = false) {
       <div
         className="sm:flex flex-row
             justify-center items-center
-            hidden gap-2" 
+            hidden gap-2"
       >
         <div className="flex">
-          <Switch
-           checked={user.theme}
-           onChange={handleChange}
-           />
-          <img src={moon} alt="moon" className='h-[27px] w-[27px]'/>
+          <Switch checked={user.theme} onChange={handleChange} />
+          <img src={moon} alt="moon" className="h-[27px] w-[27px]" />
         </div>
         <Select
           onChange={(e) => changeLanguage(e)}

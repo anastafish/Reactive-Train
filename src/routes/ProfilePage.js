@@ -35,7 +35,11 @@ export default function ProfilePage() {
   }
 
   function logOut() {
-    setUser((prevState) => ({ ...prevState, active: "home" }));
+    setUser((prevState) => ({
+      theme: prevState.theme,
+      active: "home",
+      language: prevState.language,
+     }));
     window.open("#/", "_self");
   }
 

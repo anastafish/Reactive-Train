@@ -145,8 +145,7 @@ function Reservation() {
                   ))}
               </Select>
             </div>
-            <div className="flex w-full items-center justify-center
-             sm:flex-row flex-col sm:gap-0 gap-2">
+            <div className="flex w-full items-center justify-center sm:flex-row flex-col sm:gap-0 gap-2">
               <Select
                 onChange={handleChange}
                 defaultValue={"return"}
