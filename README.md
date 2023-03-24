@@ -7,7 +7,7 @@ Welcome to my train reservation ticket website! With this service, you can easil
 - Signup/Login
 - Pick a seat
 - Choose the departure time
-- Choose seat className
+- Choose seat class
 - Fully Support for Arabic/English  
 - View your past and current tickets 
 - And more!
